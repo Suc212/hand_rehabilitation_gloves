@@ -1,0 +1,12 @@
+:HL["/_next/static/chunks/ba9019c1da5fe988.css","style"]
+:HL["/_next/static/chunks/4713efc587ee463c.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/images/SmartSweeper Img 1.png","image"]
+:HL["/images/room-cleaning-modes.avif","image"]
+:HL["/images/floor-surface-suitability.avif","image"]
+:HL["/images/component-detail-callouts.avif","image"]
+:HL["/images/dimensions-brush-detail.avif","image"]
+:HL["/images/Review.png","image"]
+:HL["/images/Image 3.png","image"]
+0:{"buildId":"BG5Tik2Yj0A0DHvvzIxIP","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

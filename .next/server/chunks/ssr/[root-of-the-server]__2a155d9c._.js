@@ -1,0 +1,20 @@
+module.exports=[17094,a=>{a.v({className:"inter_952ac17b-module__o-W35G__className"})},94064,a=>{a.v({className:"geist_mono_354fc78-module__zrY5Sa__className"})},72123,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(11857);a.n(d("[project]/node_modules/next/dist/client/script.js <module evaluation>"))},44536,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(11857);a.n(d("[project]/node_modules/next/dist/client/script.js"))},11153,a=>{"use strict";a.i(72123);var b=a.i(44536);a.n(b)},71618,(a,b,c)=>{b.exports=a.r(11153)},93160,a=>{"use strict";let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call Analytics() from the server but Analytics is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/node_modules/@vercel/analytics/dist/next/index.mjs <module evaluation>","Analytics");a.s(["Analytics",0,b])},81037,a=>{"use strict";let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call Analytics() from the server but Analytics is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/node_modules/@vercel/analytics/dist/next/index.mjs","Analytics");a.s(["Analytics",0,b])},9835,a=>{"use strict";a.i(93160);var b=a.i(81037);a.n(b)},33290,a=>{"use strict";var b=a.i(7997),c=a.i(17094);let d={className:c.default.className,style:{fontFamily:"'Inter', 'Inter Fallback'",fontStyle:"normal"}};null!=c.default.variable&&(d.variable=c.default.variable);var e=a.i(94064);let f={className:e.default.className,style:{fontFamily:"'Geist Mono', 'Geist Mono Fallback'",fontStyle:"normal"}};null!=e.default.variable&&(f.variable=e.default.variable);var g=a.i(71618),h=a.i(9835);function i({children:a}){return(0,b.jsxs)("html",{lang:"en",children:[(0,b.jsxs)("head",{children:[(0,b.jsx)(g.default,{id:"meta-pixel",strategy:"afterInteractive",children:`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '2402539153587328');
+            fbq('track', 'PageView');
+          `}),(0,b.jsx)(g.default,{id:"microsoft-clarity",strategy:"afterInteractive",children:`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "xc4tj2mezb");
+          `})]}),(0,b.jsxs)("body",{className:"font-sans antialiased",children:[(0,b.jsx)("noscript",{children:(0,b.jsx)("img",{height:"1",width:"1",style:{display:"none"},src:"https://www.facebook.com/tr?id=2402539153587328&ev=PageView&noscript=1",alt:""})}),a,(0,b.jsx)(h.Analytics,{})]})]})}a.s(["default",()=>i,"metadata",0,{title:"SweepBot Pro | Smart Robot Sweeper",description:"Keep your floors cleaner with SweepBot Pro - powerful suction, quiet daily cleaning, and effortless home maintenance."}],33290)}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__2a155d9c._.js.map

@@ -1,0 +1,253 @@
+[00:00:02.261] Server  LOG      ✓ Ready in 1547ms
+[00:00:30.462] Server  LOG      ○ Compiling / ...
+[00:00:36.592] Server  WARN     ⚠ Cross origin request detected from 10.2.0.2 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:36.684] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:37.121] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         webcrx=""
+                        >
+                  ...
+
+[00:00:39.112] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:39.113] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:39.113] Browser LOG     %c[Vercel Web Analytics]%c [view] http://10.2.0.2:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://10.2.0.2:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1782309937111} /_vercel/insights/view
+[00:04:14.394] Server  LOG      ✓ Compiled in 165ms
+[01:34:24.659] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.661] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.675] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.678] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.679] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.682] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.685] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.687] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.689] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.690] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.693] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.695] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.697] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.698] Server  ERROR    ⨯ ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:34:24.709] Server  LOG      ✓ Compiled in 180ms
+[01:34:24.818] Browser ERROR   ./app/page.tsx:1:1
+Module not found: Can't resolve '@/components/landing/hero-section'
+> 1 | import { HeroSection } from "@/components/landing/hero-section"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+
+Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[01:34:37.485] Server  LOG      ✓ Compiled in 108ms
