@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
         <li><strong>WhatsApp:</strong> ${orderData.whatsapp}</li>
         <li><strong>Email:</strong> ${orderData.email || "Not provided"}</li>
         <li><strong>Address:</strong> ${orderData.address}</li>
-        <li><strong>Order:</strong> ${quantity} ${unitLabel} for GH₵${totalPrice.toLocaleString()}</li>
+        <li><strong>Order:</strong> ${quantity} ${unitLabel} of Hand Rehabilitation Glove for GH₵${totalPrice.toLocaleString()}</li>
         <li><strong>Order Time:</strong> ${new Date().toLocaleString()}</li>
       </ul>
     `
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         resend.emails.send({
           from: "onboarding@resend.dev",
           to: [adminEmail],
-          subject: "New SweepBot Pro Order Received",
+          subject: "New Hand Rehabilitation Glove Order Received",
           html: emailHtml,
         }),
         5000,

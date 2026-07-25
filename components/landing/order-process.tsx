@@ -1,40 +1,78 @@
-import { MessageCircle, PackageCheck, PhoneCall } from "lucide-react"
+import { CheckCircle2, CircleMinus, XCircle } from "lucide-react"
 
-const steps = [
+const comparisons = [
   {
-    icon: PackageCheck,
-    title: "Place Order",
-    description: "Choose your quantity and submit your delivery details.",
+    feature: "Guided finger opening and closing",
+    glove: "Yes",
+    stressBall: "No",
+    noTool: "No",
   },
   {
-    icon: PhoneCall,
-    title: "Confirmation Call",
-    description: "We contact you on WhatsApp or phone to confirm your order.",
+    feature: "Short repeatable home sessions",
+    glove: "Yes",
+    stressBall: "Limited",
+    noTool: "Hard to maintain",
   },
   {
-    icon: MessageCircle,
-    title: "Delivery",
-    description: "Receive your SweepBot Pro through free delivery anywhere in Ghana.",
+    feature: "Supports real task movement",
+    glove: "Grip, pinch, and finger mobility",
+    stressBall: "Mostly squeezing",
+    noTool: "Unstructured",
+  },
+  {
+    feature: "Caregiver-friendly routine",
+    glove: "Clear assisted movement",
+    stressBall: "Minimal guidance",
+    noTool: "Depends on memory",
   },
 ]
 
+const getIcon = (value: string) => {
+  if (value === "Yes" || value.includes("Grip") || value.includes("Clear")) {
+    return <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+  }
+
+  if (value === "No") {
+    return <XCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-destructive" />
+  }
+
+  return <CircleMinus className="mt-0.5 h-4 w-4 flex-shrink-0 text-muted-foreground" />
+}
+
 export function OrderProcess() {
   return (
-    <section className="border-y bg-muted/30 py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {steps.map((step, index) => (
-            <div key={step.title} className="flex items-start gap-3 rounded-xl bg-background p-4 shadow-sm">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <step.icon className="h-5 w-5" />
+    <section className="border-y bg-muted/30 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Why Use a Rehab Glove?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Compared with stress balls, putty, or no tool, the glove gives hand recovery a clearer movement routine.
+          </p>
+        </div>
+
+        <div className="mt-10 overflow-hidden rounded-2xl border bg-card shadow-sm">
+          <div className="grid grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr] gap-3 bg-primary px-4 py-3 text-xs font-semibold text-primary-foreground sm:text-sm">
+            <span>Recovery need</span>
+            <span>Rehab glove</span>
+            <span>Stress ball / putty</span>
+            <span>No tool</span>
+          </div>
+          <div className="divide-y">
+            {comparisons.map((row) => (
+              <div
+                key={row.feature}
+                className="grid grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr] gap-3 px-4 py-4 text-xs sm:text-sm"
+              >
+                <p className="font-medium text-foreground">{row.feature}</p>
+                {[row.glove, row.stressBall, row.noTool].map((value, index) => (
+                  <p key={`${row.feature}-${index}`} className="flex items-start gap-2 leading-relaxed text-muted-foreground">
+                    {getIcon(value)}
+                    <span>{value}</span>
+                  </p>
+                ))}
               </div>
-              <div>
-                <p className="text-xs font-semibold uppercase text-primary">Step {index + 1}</p>
-                <h3 className="mt-1 font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.description}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

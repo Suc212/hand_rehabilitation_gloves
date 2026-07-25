@@ -99,7 +99,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\DELL XPS\\Documents\\Code\\Smart-robot-sweeper",
+    "outputFileTracingRoot": "C:\\Users\\DELL XPS\\Documents\\Code\\Hand_Rehabilitation_Gloves",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -205,6 +205,7 @@
       "proxyClientMaxBodySize": 10485760,
       "hideLogsAfterAbort": false,
       "mcpServer": true,
+      "turbopackUseSystemTlsCerts": true,
       "optimizePackageImports": [
         "lucide-react",
         "date-fns",
@@ -289,11 +290,11 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.mjs",
     "turbopack": {
-      "root": "C:\\Users\\DELL XPS\\Documents\\Code\\Smart-robot-sweeper"
+      "root": "C:\\Users\\DELL XPS\\Documents\\Code\\Hand_Rehabilitation_Gloves"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "C:\\Users\\DELL XPS\\Documents\\Code\\Smart-robot-sweeper",
+  "appDir": "C:\\Users\\DELL XPS\\Documents\\Code\\Hand_Rehabilitation_Gloves",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",

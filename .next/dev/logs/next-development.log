@@ -1,253 +1,1231 @@
-[00:00:02.261] Server  LOG      ✓ Ready in 1547ms
-[00:00:30.462] Server  LOG      ○ Compiling / ...
-[00:00:36.592] Server  WARN     ⚠ Cross origin request detected from 10.2.0.2 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:01.199] Server  LOG      ✓ Ready in 798ms
+[00:00:22.962] Server  LOG      ○ Compiling / ...
+[00:00:24.813] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:25.880] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:25.880] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:25.880] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1784949581084} /_vercel/insights/view
+[00:00:35.744] Server  WARN     ⚠ Cross origin request detected from 10.2.0.2 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:36.684] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:37.121] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="layout.tsx">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html
-                          lang="en"
--                         webcrx=""
-                        >
-                  ...
-
-[00:00:39.112] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:39.113] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:39.113] Browser LOG     %c[Vercel Web Analytics]%c [view] http://10.2.0.2:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://10.2.0.2:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1782309937111} /_vercel/insights/view
-[00:04:14.394] Server  LOG      ✓ Compiled in 165ms
-[01:34:24.659] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:00:35.783] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:37.589] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:37.589] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:37.589] Browser LOG     %c[Vercel Web Analytics]%c [view] http://10.2.0.2:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://10.2.0.2:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1784949592794} /_vercel/insights/view
+[00:51:49.750] Server  LOG      ✓ Compiled in 289ms
+[00:51:59.982] Server  LOG      ✓ Compiled in 107ms
+[00:52:17.163] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.661] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.169] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.675] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.174] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.678] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.175] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.679] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.178] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.682] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.179] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.685] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.181] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.687] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.185] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.689] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.186] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.690] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.187] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.693] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.189] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.695] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+[00:52:17.191] Server  ERROR    ⨯ ./app/page.tsx:5:1
+Module not found: Can't resolve '@/components/landing/problem-solution'
   3 | import { TrustBadges } from "@/components/landing/trust-badges"
   4 | import { OrderProcess } from "@/components/landing/order-process"
+> 5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/problem-solution' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.697] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
-  3 | import { TrustBadges } from "@/components/landing/trust-badges"
-  4 | import { OrderProcess } from "@/components/landing/order-process"
+[00:52:18.263] Server  LOG      ✓ Compiled in 230ms
+[00:52:39.325] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[01:34:24.698] Server  ERROR    ⨯ ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
-  3 | import { TrustBadges } from "@/components/landing/trust-badges"
-  4 | import { OrderProcess } from "@/components/landing/order-process"
-
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
 
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:34:24.709] Server  LOG      ✓ Compiled in 180ms
-[01:34:24.818] Browser ERROR   ./app/page.tsx:1:1
-Module not found: Can't resolve '@/components/landing/hero-section'
-> 1 | import { HeroSection } from "@/components/landing/hero-section"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
-  3 | import { TrustBadges } from "@/components/landing/trust-badges"
-  4 | import { OrderProcess } from "@/components/landing/order-process"
+[00:52:39.327] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
 
-Import map: aliased to relative './components/landing/hero-section' inside of [project]/
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
 
 https://nextjs.org/docs/messages/module-not-found
-[01:34:37.485] Server  LOG      ✓ Compiled in 108ms
+
+
+[00:52:39.329] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.332] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.333] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.334] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.336] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.337] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.338] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.340] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.341] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:39.342] Server  ERROR    ⨯ ./app/page.tsx:7:1
+Module not found: Can't resolve '@/components/landing/benefits'
+   5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+   6 | import { Specifications } from "@/components/landing/specifications"
+>  7 | import { Benefits } from "@/components/landing/benefits"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+
+Import map: aliased to relative './components/landing/benefits' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:52:40.547] Server  LOG      ✓ Compiled in 164ms
+[00:53:02.605] Server  ERROR    ⨯ ./app/page.tsx:8:1
+Module not found: Can't resolve '@/components/landing/product-video'
+   6 | import { Specifications } from "@/components/landing/specifications"
+   7 | import { Benefits } from "@/components/landing/benefits"
+>  8 | import { ProductVideo } from "@/components/landing/product-video"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+
+Import map: aliased to relative './components/landing/product-video' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:02.606] Server  ERROR    ⨯ ./app/page.tsx:8:1
+Module not found: Can't resolve '@/components/landing/product-video'
+   6 | import { Specifications } from "@/components/landing/specifications"
+   7 | import { Benefits } from "@/components/landing/benefits"
+>  8 | import { ProductVideo } from "@/components/landing/product-video"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+
+Import map: aliased to relative './components/landing/product-video' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:04.575] Browser ERROR   ./app/page.tsx:8:1
+Module not found: Can't resolve '@/components/landing/product-video'
+   6 | import { Specifications } from "@/components/landing/specifications"
+   7 | import { Benefits } from "@/components/landing/benefits"
+>  8 | import { ProductVideo } from "@/components/landing/product-video"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+
+Import map: aliased to relative './components/landing/product-video' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:53:04.575] Browser ERROR   ./app/page.tsx:8:1
+Module not found: Can't resolve '@/components/landing/product-video'
+   6 | import { Specifications } from "@/components/landing/specifications"
+   7 | import { Benefits } from "@/components/landing/benefits"
+>  8 | import { ProductVideo } from "@/components/landing/product-video"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+
+Import map: aliased to relative './components/landing/product-video' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:53:31.745] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.747] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.750] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.751] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.752] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.753] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.755] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.756] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.757] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.759] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.760] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:31.761] Server  ERROR    ⨯ ./app/page.tsx:6:1
+Module not found: Can't resolve '@/components/landing/specifications'
+  4 | import { OrderProcess } from "@/components/landing/order-process"
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+> 6 | import { Specifications } from "@/components/landing/specifications"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Benefits } from "@/components/landing/benefits"
+  8 | import { ProductVideo } from "@/components/landing/product-video"
+  9 | import { Reviews } from "@/components/landing/reviews"
+
+Import map: aliased to relative './components/landing/specifications' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:32.958] Server  LOG      ✓ Compiled in 151ms
+[00:53:53.455] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.456] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.457] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.458] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.459] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.460] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.461] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.461] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.463] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.463] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.464] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:53.465] Server  ERROR    ⨯ ./app/page.tsx:9:1
+Module not found: Can't resolve '@/components/landing/reviews'
+   7 | import { Benefits } from "@/components/landing/benefits"
+   8 | import { ProductVideo } from "@/components/landing/product-video"
+>  9 | import { Reviews } from "@/components/landing/reviews"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+  11 | import { FAQ } from "@/components/landing/faq"
+  12 | import { OrderForm } from "@/components/landing/order-form"
+
+Import map: aliased to relative './components/landing/reviews' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:53:54.720] Server  LOG      ✓ Compiled in 140ms
+[00:54:14.009] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.011] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.012] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.012] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.014] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.015] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.015] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.016] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.019] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.020] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.021] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:14.022] Server  ERROR    ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/landing/faq'
+   9 | import { Reviews } from "@/components/landing/reviews"
+  10 | import { DeliveryPayment } from "@/components/landing/delivery-payment"
+> 11 | import { FAQ } from "@/components/landing/faq"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { OrderForm } from "@/components/landing/order-form"
+  13 | import { Footer } from "@/components/landing/footer"
+  14 |
+
+Import map: aliased to relative './components/landing/faq' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:15.358] Server  LOG      ✓ Compiled in 133ms
+[00:54:38.749] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.750] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.753] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.754] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.755] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.756] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.757] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.758] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.759] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.760] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.761] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:38.762] Server  ERROR    ⨯ ./app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/order-process'
+  2 | import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+  3 | import { TrustBadges } from "@/components/landing/trust-badges"
+> 4 | import { OrderProcess } from "@/components/landing/order-process"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { ProblemSolution } from "@/components/landing/problem-solution"
+  6 | import { Specifications } from "@/components/landing/specifications"
+  7 | import { Benefits } from "@/components/landing/benefits"
+
+Import map: aliased to relative './components/landing/order-process' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:54:39.948] Server  LOG      ✓ Compiled in 150ms
+[00:54:46.697] Server  LOG      ✓ Compiled in 145ms

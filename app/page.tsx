@@ -18,12 +18,12 @@ export default function Home() {
       <FreeDeliveryBanner />
       <HeroSection />
       <TrustBadges />
-      <OrderProcess />
-      <ProductVideo />
-      <Reviews />
       <ProblemSolution />
       <Benefits />
+      <Reviews />
+      <ProductVideo />
       <Specifications />
+      <OrderProcess />
       <DeliveryPayment />
       <FAQ />
       <OrderForm />

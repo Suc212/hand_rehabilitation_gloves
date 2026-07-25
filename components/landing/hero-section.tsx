@@ -5,10 +5,10 @@ import { priceTiers } from "@/lib/pricing"
 import { CheckCircle2, Shield, Star } from "lucide-react"
 
 const heroBenefits = [
-  "Cleans dust, hair, and crumbs automatically",
-  "Works on tiles and hard floors",
-  "Reaches under beds and furniture",
-  "Quiet enough for daily cleaning",
+  "Supports grip strength and finger mobility",
+  "Built for stroke recovery and post-surgery healing",
+  "Helps with short, frequent home therapy sessions",
+  "Designed for daily independence and confidence",
   "Free delivery in Ghana",
 ]
 
@@ -19,17 +19,16 @@ export function HeroSection() {
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-6 sm:space-y-8">
             <Badge variant="secondary" className="px-3 py-1 text-xs sm:text-sm font-medium">
-              Smart Daily Floor Cleaning
+              Wearable Hand Recovery Support
             </Badge>
 
             <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
-              Clean Floors, <span className="text-primary">Zero Effort</span>
+              Regain Control of Your Hands <span className="text-primary">At Your Own Pace</span>
             </h1>
 
             <p className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Dust comes back every day, but your time should not go into sweeping the same floors again and again.
-              SweepBot Pro helps you wake up, work, host guests, and relax in a cleaner home without making floor
-              cleaning part of your daily stress.
+              A wearable rehab tool designed to support grip strength, finger mobility, and daily independence for
+              stroke recovery, post-surgery healing, and chronic hand conditions.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 text-sm">
@@ -92,8 +91,8 @@ export function HeroSection() {
           <div className="relative order-first lg:order-last">
             <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5" />
             <img
-              src="/images/Review.png"
-              alt="Akosua Boateng review showing SweepBot Pro cleaning crumbs from a wood floor"
+              src="/images/Img 1.avif"
+              alt="Hand rehabilitation glove product view"
               className="mx-auto w-full max-w-sm rounded-2xl bg-white object-contain shadow-lg sm:max-w-md"
             />
           </div>

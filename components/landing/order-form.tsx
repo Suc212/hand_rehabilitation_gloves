@@ -23,9 +23,9 @@ const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPri
     label: `${quantity} ${quantity === 1 ? "Unit" : "Units"}`,
     description:
       quantity === 1
-        ? "SweepBot Pro + Charging Dock"
+        ? "Hand Rehabilitation Glove + controller"
         : `Bundle deal: Save GH₵${discount.toLocaleString()} - ${
-            quantity === 2 ? "Perfect for home & office" : "Best for families & gifts"
+            quantity === 2 ? "Good for family or clinic use" : "Best for therapy centers & caregivers"
           }`,
     popular: quantity === 2,
   }
@@ -145,14 +145,14 @@ export function OrderForm() {
             <div className="sticky top-8 space-y-4">
               <div className="overflow-hidden rounded-2xl bg-white">
                 <img
-                  src="/images/mini-all-in-one-product.avif"
-                  alt="SweepBot Pro vacuuming, sweeping, and mopping product view"
+                  src="/images/Img 10.avif"
+                  alt="Hand rehabilitation glove product package"
                   className="aspect-square w-full object-contain p-4"
                 />
               </div>
               <div className="rounded-xl bg-primary/5 p-4 text-center">
-                <p className="text-sm font-medium text-foreground">SweepBot Pro</p>
-                <p className="text-xs text-muted-foreground">Includes charging dock & accessories</p>
+                <p className="text-sm font-medium text-foreground">Hand Rehabilitation Glove</p>
+                <p className="text-xs text-muted-foreground">Includes controller and therapy accessories</p>
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@ export function OrderForm() {
               <div className="rounded-xl bg-muted/50 p-4">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">
-                    {selectedOption.quantity} x SweepBot Pro @ GH₵{UNIT_PRICE.toLocaleString()}
+                    {selectedOption.quantity} x Hand Rehabilitation Glove @ GH₵{UNIT_PRICE.toLocaleString()}
                   </span>
                   <span className="font-medium text-foreground">
                     GH₵{(selectedOption.quantity * UNIT_PRICE).toLocaleString()}
@@ -315,7 +315,7 @@ export function OrderForm() {
               </Button>
 
               <p className="text-center text-xs text-muted-foreground">
-                No payment required now - Pay when you receive your SweepBot
+                No payment required now - Pay when you receive your hand rehabilitation glove
               </p>
             </div>
           </form>

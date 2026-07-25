@@ -1,68 +1,82 @@
-import { Smartphone, Map, Clock, Leaf } from "lucide-react"
+import { Activity, Brain, Hand, HeartHandshake } from "lucide-react"
 
 import { OrderCta } from "@/components/landing/order-cta"
 
-const benefits = [
-  //{
-    //icon: Smartphone,
-    //title: "App Control",
-    //description:
-    //  "Control your SweepBot from anywhere with our intuitive mobile app. Start, stop, schedule, and monitor cleaning sessions in real-time.",
-  //},
+const helpLevels = [
   {
-    icon: Map,
-    title: "Smart Mapping",
-    description:
-      "Advanced LiDAR technology creates detailed maps of your home, ensuring systematic coverage and no missed spots.",
+    icon: Hand,
+    level: "Level 1",
+    title: "Physical / Mechanical",
+    points: [
+      "Supports repetitive motion exercises that rebuild finger flexion and extension",
+      "Assists gentle, consistent opening and closing movement",
+      "Helps retain warmth around the hand before movement work",
+      "Encourages circulation through repeated guided motion",
+    ],
   },
   {
-    icon: Clock,
-    title: "Auto Scheduling",
-    description:
-      "Set a cleaning time and let SweepBot handle regular floor care while you focus on your day.",
+    icon: Activity,
+    level: "Level 2",
+    title: "Functional / Everyday Life",
+    points: [
+      "Rebuilds motions used for gripping, pinching, and hand control",
+      "Bridges the gap between clinical exercise and holding a fork again",
+      "Designed for short, frequent sessions that fit around a normal day",
+    ],
   },
   {
-    icon: Leaf,
-    title: "Eco-Friendly",
-    description:
-      "Energy-efficient operation uses 80% less power than traditional vacuums while delivering superior results.",
+    icon: Brain,
+    level: "Level 3",
+    title: "Clinical / Recovery-Oriented",
+    points: [
+      "Complements prescribed physical or occupational therapy",
+      "Encourages consistency, a key factor in neuroplasticity-driven recovery",
+      "Helps patients and caregivers notice progress between clinical visits",
+    ],
+  },
+  {
+    icon: HeartHandshake,
+    level: "Level 4",
+    title: "Emotional / Psychological",
+    points: [
+      "Small visible wins rebuild confidence, not just muscle",
+      "Reduces the helpless feeling that can follow loss of hand function",
+      "Gives family members a concrete way to support recovery",
+    ],
   },
 ]
 
 export function Benefits() {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="border-y bg-muted/30 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Why Choose SweepBot Pro</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Intelligent features designed for modern living</p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">How It Helps</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Four practical levels of support, from finger movement to everyday confidence.
+          </p>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          <div className="overflow-hidden rounded-2xl bg-white">
-            <img
-              src="/images/room-cleaning-modes.avif"
-              alt="SweepBot Pro cleaning modes for different rooms"
-              className="aspect-[4/3] w-full object-contain p-4 transition-transform hover:scale-105"
-            />
-          </div>
-          <div className="overflow-hidden rounded-2xl bg-white">
-            <img
-              src="/images/floor-surface-suitability.avif"
-              alt="SweepBot Pro suitable for different floor surfaces"
-              className="aspect-[4/3] w-full object-contain p-4 transition-transform hover:scale-105"
-            />
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((benefit) => (
-            <div key={benefit.title} className="text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
-                <benefit.icon className="h-7 w-7 text-primary" />
+        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          {helpLevels.map((level) => (
+            <div key={level.title} className="rounded-2xl border bg-card p-6 shadow-sm sm:p-8">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <level.icon className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase text-primary">{level.level}</p>
+                  <h3 className="mt-1 text-lg font-semibold text-foreground">{level.title}</h3>
+                </div>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-foreground">{benefit.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{benefit.description}</p>
+              <ul className="mt-6 space-y-3">
+                {level.points.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

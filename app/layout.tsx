@@ -9,9 +9,9 @@ const _inter = Inter({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "SweepBot Pro | Smart Robot Sweeper",
+  title: "Hand Rehabilitation Glove | Assisted Hand Therapy",
   description:
-    "Keep your floors cleaner with SweepBot Pro - powerful suction, quiet daily cleaning, and effortless home maintenance.",
+    "Support hand mobility, grip practice, and daily rehabilitation exercises with an assisted hand rehabilitation glove.",
     //generator: 'v0.app'
 }
 
@@ -33,17 +33,8 @@ export default function RootLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '2402539153587328');
+            fbq('init', '4632254820337295');
             fbq('track', 'PageView');
-          `}
-        </Script>
-        <Script id="microsoft-clarity" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "xc4tj2mezb");
           `}
         </Script>
       </head>
@@ -53,7 +44,7 @@ export default function RootLayout({
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=2402539153587328&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id=4632254820337295&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>

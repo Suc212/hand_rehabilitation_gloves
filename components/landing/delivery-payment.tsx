@@ -28,8 +28,8 @@ export function DeliveryPayment() {
               <h3 className="font-semibold text-foreground">Accra Orders</h3>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Customers in Accra can pay when the SweepBot Pro is delivered. We will contact you first to confirm your
-              details before dispatch.
+              Customers in Accra can pay when the hand rehabilitation glove is delivered. We will contact you first to
+              confirm your details before dispatch.
             </p>
           </div>
 

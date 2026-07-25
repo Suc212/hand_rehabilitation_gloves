@@ -1,97 +1,90 @@
-import { Star } from "lucide-react"
+import { MessageCircle, Star } from "lucide-react"
 
 import { OrderCta } from "@/components/landing/order-cta"
 
 const reviews = [
   {
     id: 1,
-    name: "Kwame Asante",
+    name: "Akosua Ofori",
     location: "Accra",
+    condition: "Stroke recovery",
     rating: 5,
-    text: "This robot sweeper has changed my life! My house is always clean even when I'm at work. Best purchase I've made this year.",
-    date: "2 weeks ago",
+    text: "After my stroke, simple tasks like holding a cup and buttoning my shirt were difficult. The glove made home therapy easier by gently helping my fingers open and close.",
   },
   {
     id: 2,
-    name: "Ama Mensah",
-    location: "Kumasi",
+    name: "Abena Darko",
+    location: "East Legon",
+    condition: "Caregiver support",
     rating: 5,
-    text: "I was skeptical at first, but SweepBot Pro exceeded my expectations. It navigates around furniture perfectly and the battery lasts long.",
-    date: "1 month ago",
+    text: "We use it with my father between therapy appointments. It gives us a clear routine for short daily sessions instead of just reminding him to squeeze a ball.",
   },
   {
     id: 3,
-    name: "Kofi Osei",
-    location: "Tema",
+    name: "Nana Owusu",
+    location: "Kumasi",
+    condition: "Post-surgery mobility",
     rating: 5,
-    text: "My wife loves it! No more arguments about who sweeps the floor. Worth every cedis. Delivery was also very fast.",
-    date: "3 weeks ago",
+    text: "After my hand surgery, I needed gentle movement practice. The adjustable support helped me repeat finger exercises without forcing painful movement.",
   },
   {
     id: 4,
-    name: "Efua Boateng",
+    name: "Lydia Hammond",
     location: "Takoradi",
+    condition: "Arthritis stiffness",
     rating: 5,
-    text: "I bought 2 for my home and office. The cleaning quality is amazing and it's so quiet. Highly recommend to all busy Ghanaians!",
-    date: "1 week ago",
-  },
-  {
-    id: 5,
-    name: "Yaw Darko",
-    location: "East Legon",
-    rating: 5,
-    text: "Perfect for my tiled floors. It picks up dust and pet hair easily. Customer service was also very helpful when I had questions.",
-    date: "2 months ago",
-  },
-  {
-    id: 6,
-    name: "Adwoa Frimpong",
-    location: "Spintex",
-    rating: 5,
-    text: "Gift for my mother and she calls me every day to thank me. Easy to use even for someone not tech-savvy. 10/10!",
-    date: "3 days ago",
+    text: "Morning stiffness made small tasks frustrating. Using the glove for short sessions helps my hand feel more prepared before gripping, pinching, and daily chores.",
   },
 ]
 
 export function Reviews() {
   return (
-    <section className="py-12 sm:py-20 bg-muted/30">
+    <section id="facebook-reviews" className="border-y bg-muted/30 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="flex items-center justify-center gap-1">
+          <span className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-4 py-1.5 text-sm font-semibold text-white">
+            <MessageCircle className="h-4 w-4" />
+            Facebook Reviews
+          </span>
+          <div className="mt-4 flex items-center justify-center gap-1">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
             ))}
           </div>
-          <p className="mt-2 text-lg font-semibold text-foreground">4.9/5 from 500+ happy customers</p>
-          <h2 className="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            What Other Ghanaians Are Saying
+          <p className="mt-2 text-lg font-semibold text-foreground">4.8/5 from 500+ customers</p>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            What People Are Saying on Facebook
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Real recovery stories help visitors understand what daily progress can look like.
+          </p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl bg-card shadow-lg">
-          <img
-            src="/images/Image 3.png"
-            alt="Customer testimonial from Jessica Williams holding a smart sweeper"
-            className="w-full object-contain"
-          />
+        <div className="mx-auto mt-10 max-w-4xl rounded-2xl border bg-card p-3 shadow-lg sm:p-4">
+          <div className="overflow-hidden rounded-xl bg-white">
+            <img
+              src="/images/Review 1.png"
+              alt="Facebook review from Akosua Ofori about using a hand rehabilitation glove after stroke recovery"
+              className="w-full object-contain"
+            />
+          </div>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {reviews.map((review) => (
-            <div key={review.id} className="rounded-xl border bg-card p-5 shadow-sm transition-shadow hover:shadow-md">
+            <div key={review.id} className="rounded-xl border bg-card p-5 shadow-sm">
               <div className="flex items-center gap-1">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
+              <p className="mt-3 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                {review.condition}
+              </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{review.text}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <div>
-                  <p className="font-semibold text-foreground">{review.name}</p>
-                  <p className="text-xs text-muted-foreground">{review.location}</p>
-                </div>
-                <span className="text-xs text-muted-foreground">{review.date}</span>
+              <div className="mt-4">
+                <p className="font-semibold text-foreground">{review.name}</p>
+                <p className="text-xs text-muted-foreground">{review.location}</p>
               </div>
             </div>
           ))}

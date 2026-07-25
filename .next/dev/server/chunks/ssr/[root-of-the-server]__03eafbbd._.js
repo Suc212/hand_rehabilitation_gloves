@@ -74,8 +74,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$
 ;
 ;
 const metadata = {
-    title: "SweepBot Pro | Smart Robot Sweeper",
-    description: "Keep your floors cleaner with SweepBot Pro - powerful suction, quiet daily cleaning, and effortless home maintenance."
+    title: "Hand Rehabilitation Glove | Assisted Hand Therapy",
+    description: "Support hand mobility, grip practice, and daily rehabilitation exercises with an assisted hand rehabilitation glove."
 };
 function RootLayout({ children }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
@@ -95,7 +95,7 @@ function RootLayout({ children }) {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1757682245641811');
+            fbq('init', '2402539153587328');
             fbq('track', 'PageView');
           `
                     }, void 0, false, {
@@ -111,7 +111,7 @@ function RootLayout({ children }) {
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
               t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
               y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "wqia2a8hed");
+            })(window, document, "clarity", "script", "xc4tj2mezb");
           `
                     }, void 0, false, {
                         fileName: "[project]/app/layout.tsx",
@@ -134,7 +134,7 @@ function RootLayout({ children }) {
                             style: {
                                 display: "none"
                             },
-                            src: "https://www.facebook.com/tr?id=1757682245641811&ev=PageView&noscript=1",
+                            src: "https://www.facebook.com/tr?id=2402539153587328&ev=PageView&noscript=1",
                             alt: ""
                         }, void 0, false, {
                             fileName: "[project]/app/layout.tsx",

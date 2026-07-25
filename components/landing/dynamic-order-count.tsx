@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-const STORAGE_KEY = "sweepbot_daily_order_count"
+const STORAGE_KEY = "hand_rehab_glove_daily_order_count"
 const MIN_DAILY_START = 27
 const MAX_DAILY_START = 43
 const MAX_DAILY_COUNT = 124

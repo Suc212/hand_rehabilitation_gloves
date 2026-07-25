@@ -5,13 +5,13 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <span className="text-lg">🤖</span>
+              <span className="text-sm font-bold text-primary-foreground">H</span>
             </div>
-            <span className="font-semibold text-foreground">SweepBot Pro</span>
+            <span className="font-semibold text-foreground">Hand Rehabilitation Glove</span>
           </div>
 
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Korret Stores. All rights reserved.
+            &copy; {new Date().getFullYear()} Korret Stores. All rights reserved.
           </p>
 
           <div className="flex gap-6 text-sm text-muted-foreground">
