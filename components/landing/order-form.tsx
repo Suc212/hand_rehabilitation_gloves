@@ -157,7 +157,11 @@ export function OrderForm() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="lg:col-span-3 rounded-2xl border bg-card p-5 shadow-lg sm:p-8">
+          <form
+            onSubmit={handleSubmit}
+            autoComplete="on"
+            className="lg:col-span-3 rounded-2xl border bg-card p-5 shadow-lg sm:p-8"
+          >
             {error && <div className="mb-5 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
 
             <div className="space-y-5">
@@ -209,13 +213,27 @@ export function OrderForm() {
                   <Label htmlFor="firstName">
                     First Name <span className="text-destructive">*</span>
                   </Label>
-                  <Input id="firstName" name="firstName" placeholder="Kwame" required className="h-12 text-base" />
+                  <Input
+                    id="firstName"
+                    name="firstName"
+                    autoComplete="given-name"
+                    placeholder="Kwame"
+                    required
+                    className="h-12 text-base"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="lastName">
                     Last Name <span className="text-destructive">*</span>
                   </Label>
-                  <Input id="lastName" name="lastName" placeholder="Asante" required className="h-12 text-base" />
+                  <Input
+                    id="lastName"
+                    name="lastName"
+                    autoComplete="family-name"
+                    placeholder="Asante"
+                    required
+                    className="h-12 text-base"
+                  />
                 </div>
               </div>
 
@@ -227,6 +245,8 @@ export function OrderForm() {
                   id="phone"
                   name="phone"
                   type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
                   placeholder="0XX XXX XXXX"
                   required
                   className="h-12 text-base"
@@ -241,6 +261,8 @@ export function OrderForm() {
                   id="whatsapp"
                   name="whatsapp"
                   type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
                   placeholder="0XX XXX XXXX"
                   required
                   className="h-12 text-base"
@@ -256,6 +278,8 @@ export function OrderForm() {
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
+                  inputMode="email"
                   placeholder="kwame@example.com"
                   className="h-12 text-base"
                 />
@@ -268,6 +292,7 @@ export function OrderForm() {
                 <Textarea
                   id="address"
                   name="address"
+                  autoComplete="street-address"
                   placeholder="e.g. Spintex Road, near Shell Filling Station, Accra"
                   rows={3}
                   required

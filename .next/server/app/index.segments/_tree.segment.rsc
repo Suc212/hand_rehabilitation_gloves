@@ -7,4 +7,4 @@
 :HL["/images/Img 6.avif","image"]
 :HL["/images/Img 1.avif","image"]
 :HL["/images/Review 1.png","image"]
-0:{"buildId":"f8JWZ4eeCrFdcPPl5WYSu","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"eOhHYXPYO5SaEaYMTidxP","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
