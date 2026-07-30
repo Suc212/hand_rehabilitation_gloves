@@ -1,4 +1,4 @@
-export const UNIT_PRICE = 2200
+export const UNIT_PRICE = 2000
 
 const OLD_UNIT_PRICE = 1500
 const OLD_ORIGINAL_UNIT_PRICE = 2300
