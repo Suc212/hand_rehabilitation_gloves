@@ -3,15 +3,16 @@ import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
+import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" })
 
 export const metadata: Metadata = {
-  title: "Hand Rehabilitation Glove | Assisted Hand Therapy",
+  title: "Korret Stores | Support for Everyday Independence",
   description:
-    "Support hand mobility, grip practice, and daily rehabilitation exercises with an assisted hand rehabilitation glove.",
+    "Practical support for home rehabilitation and everyday independence, with free delivery across Ghana.",
     //generator: 'v0.app'
 }
 
@@ -47,7 +48,8 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${geistMono.variable} flex min-h-screen flex-col font-sans antialiased`}>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:p-4 focus:text-primary focus:shadow-lg">Skip to content</a>
         <noscript>
           <img
             height="1"
@@ -57,6 +59,7 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        <FreeDeliveryBanner />
         {children}
         <Analytics />
       </body>

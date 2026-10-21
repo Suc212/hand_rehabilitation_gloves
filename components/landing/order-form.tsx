@@ -7,8 +7,10 @@ import { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle2, Package, ShieldCheck, Banknote } from "lucide-react"
+import { Package, ShieldCheck, Banknote } from "lucide-react"
 import { ORIGINAL_UNIT_PRICE, UNIT_PRICE, priceTiers } from "@/lib/pricing"
+import { ORDER_SUCCESS_PATH } from "@/lib/routes"
+import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
 
 function Label({ className = "", ...props }: React.ComponentProps<"label">) {
   return <label className={`flex items-center gap-2 text-sm leading-none font-medium ${className}`} {...props} />
@@ -34,10 +36,10 @@ const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPri
   }
 })
 
-export function OrderForm() {
+export function OrderForm({ productId = DEFAULT_PRODUCT_ID }: { productId?: ProductId }) {
+  const product = products[productId]
   const [selectedQuantity, setSelectedQuantity] = useState(2)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const selectedOption = useMemo(
@@ -53,6 +55,7 @@ export function OrderForm() {
     const formData = new FormData(e.currentTarget)
 
     const orderData = {
+      productId,
       firstName: formData.get("firstName") as string,
       lastName: formData.get("lastName") as string,
       phone: formData.get("phone") as string,
@@ -76,42 +79,17 @@ export function OrderForm() {
       const result = await response.json().catch(() => null)
 
       if (response.ok && result?.success) {
-        setIsSubmitted(true)
+        // A fresh request reads the receipt cookie and avoids a cached summary.
+        window.location.replace(ORDER_SUCCESS_PATH)
+        return
       } else {
         setError(result?.error || "Something went wrong. Please try again.")
       }
     } catch (submitError) {
       console.error("Order submission error:", submitError)
       setError("Unable to submit your order. Please check your connection and try again.")
-    } finally {
-      setIsSubmitting(false)
     }
-  }
-
-  if (isSubmitted) {
-    return (
-      <section id="order" className="py-12 sm:py-20">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border bg-card p-6 text-center shadow-lg sm:p-10">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-              <CheckCircle2 className="h-8 w-8 text-primary" />
-            </div>
-            <h2 className="mt-5 text-xl font-bold text-foreground sm:text-2xl">Order Confirmed!</h2>
-            <p className="mt-3 text-muted-foreground">
-              Thank you for your order. We will contact you on WhatsApp to confirm delivery details.
-            </p>
-            <div className="mt-4 rounded-lg bg-primary/10 p-3">
-              <p className="text-sm font-medium text-primary">
-                Remember: Pay GH₵{selectedOption.totalPrice.toLocaleString()} on delivery
-              </p>
-            </div>
-            <Button className="mt-6 w-full sm:w-auto" onClick={() => setIsSubmitted(false)}>
-              Place Another Order
-            </Button>
-          </div>
-        </div>
-      </section>
-    )
+    setIsSubmitting(false)
   }
 
   return (
@@ -143,7 +121,7 @@ export function OrderForm() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-5">
+        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <div className="hidden lg:block lg:col-span-2">
             <div className="sticky top-8 space-y-4">
               <div className="overflow-hidden rounded-2xl bg-white">
@@ -152,12 +130,12 @@ export function OrderForm() {
                   width={800}
                   height={800}
                   sizes="(min-width: 1024px) 320px, 1px"
-                  alt="Hand rehabilitation glove product package"
+                  alt={`${product.name} product package`}
                   className="aspect-square w-full object-contain p-4"
                 />
               </div>
               <div className="rounded-xl bg-primary/5 p-4 text-center">
-                <p className="text-sm font-medium text-foreground">Hand Rehabilitation Glove</p>
+                <p className="text-sm font-medium text-foreground">{product.name}</p>
                 <p className="text-xs text-muted-foreground">Includes controller and therapy accessories</p>
               </div>
             </div>
@@ -166,12 +144,12 @@ export function OrderForm() {
           <form
             onSubmit={handleSubmit}
             autoComplete="on"
-            className="lg:col-span-3 rounded-2xl border bg-card p-5 shadow-lg sm:p-8"
+            className="min-w-0 lg:col-span-3 rounded-2xl border bg-card p-5 shadow-lg sm:p-8"
           >
-            {error && <div className="mb-5 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
+            {error && <div role="alert" className="mb-5 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
 
             <div className="space-y-5">
-              <fieldset>
+              <fieldset className="min-w-0">
                 <legend className="text-base font-semibold">How Many Do You Want?</legend>
                 <div className="mt-3 grid gap-3">
                   {quantityOptions.map((option) => (
@@ -202,7 +180,7 @@ export function OrderForm() {
                             </span>
                           )}
                         </div>
-                        <p className="mt-0.5 text-sm text-muted-foreground">{option.description}</p>
+                        <p className="mt-0.5 text-sm text-muted-foreground">{option.quantity === 1 ? `${product.name} + controller` : option.description}</p>
                       </div>
                       <div className="text-right shrink-0">
                         <p className="text-xs text-muted-foreground line-through">
@@ -313,7 +291,7 @@ export function OrderForm() {
               <div className="rounded-xl bg-muted/50 p-4">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">
-                    {selectedOption.quantity} x Hand Rehabilitation Glove @ GH₵{UNIT_PRICE.toLocaleString()}
+                    {selectedOption.quantity} x {product.name} @ GH₵{UNIT_PRICE.toLocaleString()}
                   </span>
                   <span className="font-medium text-foreground">
                     GH₵{(selectedOption.quantity * UNIT_PRICE).toLocaleString()}
@@ -342,7 +320,7 @@ export function OrderForm() {
                 </p>
               </div>
 
-              <Button type="submit" size="lg" className="w-full h-14 text-base font-semibold" disabled={isSubmitting}>
+              <Button type="submit" size="lg" className="w-full min-h-14 h-auto whitespace-normal py-3 text-sm sm:text-base font-semibold" disabled={isSubmitting}>
                 <Package className="mr-2 h-5 w-5" />
                 {isSubmitting
                   ? "Processing..."
@@ -350,7 +328,7 @@ export function OrderForm() {
               </Button>
 
               <p className="text-center text-xs text-muted-foreground">
-                No payment required now - Pay when you receive your hand rehabilitation glove
+                No payment required now - Our team will confirm payment and delivery arrangements
               </p>
             </div>
           </form>
