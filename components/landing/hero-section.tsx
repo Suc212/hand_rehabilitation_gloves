@@ -13,9 +13,11 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-6 sm:space-y-8">
-            <Badge variant="secondary" className="px-3 py-1 text-xs sm:text-sm font-medium">
-              {product.badge}
-            </Badge>
+            {product.badge && (
+              <Badge variant="secondary" className="px-3 py-1 text-xs sm:text-sm font-medium">
+                {product.badge}
+              </Badge>
+            )}
 
             <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
               {product.headline} <span className="text-primary">{product.headlineAccent}</span>

@@ -23,9 +23,9 @@ export const products = {
   "rehab-helper-gloves": {
     name: "Rehab Helper Gloves",
     path: REHAB_HELPER_PATH,
-    badge: "For Families & Caregivers",
-    headline: "Help Them Take the Next Small Step",
-    headlineAccent: "One Routine at a Time",
+    badge: "",
+    headline: "The Hands are the fastest route to",
+    headlineAccent: "stroke recovery",
     description: "Support someone you care for with assisted hand movement practice at home. Adjustable settings and guided finger opening and closing make it easier to build a short, regular routine alongside professional guidance.",
     benefits: [
       "Assists finger opening and closing",
