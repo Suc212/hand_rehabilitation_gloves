@@ -1,15 +1,18 @@
 "use client"
 
 import type React from "react"
+import Image from "next/image"
 
 import { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
 import { CheckCircle2, Package, ShieldCheck, Banknote } from "lucide-react"
 import { ORIGINAL_UNIT_PRICE, UNIT_PRICE, priceTiers } from "@/lib/pricing"
+
+function Label({ className = "", ...props }: React.ComponentProps<"label">) {
+  return <label className={`flex items-center gap-2 text-sm leading-none font-medium ${className}`} {...props} />
+}
 
 const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPrice, discount }) => {
 
@@ -144,8 +147,11 @@ export function OrderForm() {
           <div className="hidden lg:block lg:col-span-2">
             <div className="sticky top-8 space-y-4">
               <div className="overflow-hidden rounded-2xl bg-white">
-                <img
+                <Image
                   src="/images/Img 10.avif"
+                  width={800}
+                  height={800}
+                  sizes="(min-width: 1024px) 320px, 1px"
                   alt="Hand rehabilitation glove product package"
                   className="aspect-square w-full object-contain p-4"
                 />
@@ -165,13 +171,9 @@ export function OrderForm() {
             {error && <div className="mb-5 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
 
             <div className="space-y-5">
-              <div>
-                <Label className="text-base font-semibold">How Many Do You Want?</Label>
-                <RadioGroup
-                  value={selectedQuantity.toString()}
-                  onValueChange={(val) => setSelectedQuantity(Number.parseInt(val))}
-                  className="mt-3 grid gap-3"
-                >
+              <fieldset>
+                <legend className="text-base font-semibold">How Many Do You Want?</legend>
+                <div className="mt-3 grid gap-3">
                   {quantityOptions.map((option) => (
                     <label
                       key={option.quantity}
@@ -182,7 +184,15 @@ export function OrderForm() {
                           : "hover:border-muted-foreground/40"
                       }`}
                     >
-                      <RadioGroupItem value={option.quantity.toString()} id={`qty-${option.quantity}`} />
+                      <input
+                        type="radio"
+                        name="quantity"
+                        value={option.quantity}
+                        id={`qty-${option.quantity}`}
+                        checked={selectedQuantity === option.quantity}
+                        onChange={() => setSelectedQuantity(option.quantity)}
+                        className="h-4 w-4 shrink-0 accent-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                      />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="font-semibold text-foreground">{option.label}</span>
@@ -205,8 +215,8 @@ export function OrderForm() {
                       </div>
                     </label>
                   ))}
-                </RadioGroup>
-              </div>
+                </div>
+              </fieldset>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">

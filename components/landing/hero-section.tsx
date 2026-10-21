@@ -1,5 +1,6 @@
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { DynamicOrderCount } from "@/components/landing/dynamic-order-count"
 import { priceTiers } from "@/lib/pricing"
 import { CheckCircle2, Shield, Star } from "lucide-react"
@@ -74,9 +75,12 @@ export function HeroSection() {
                     </div>
                   ))}
                 </div>
-                <Button className="mt-4 w-full h-12 text-base font-semibold" size="lg" asChild>
-                  <a href="#order">Order Now</a>
-                </Button>
+                <a
+                  href="#order"
+                  className={buttonVariants({ size: "lg", className: "mt-4 w-full h-12 text-base font-semibold" })}
+                >
+                  Order Now
+                </a>
               </div>
             </div>
 
@@ -90,8 +94,15 @@ export function HeroSection() {
 
           <div className="relative order-first lg:order-last">
             <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5" />
-            <img
+            <Image
               src="/images/Img 1.avif"
+              width={935}
+              height={960}
+              // The supplied AVIF is smaller than the generated WebP at this display size.
+              unoptimized
+              preload
+              fetchPriority="high"
+              sizes="(min-width: 640px) 448px, (min-width: 416px) 384px, calc(100vw - 32px)"
               alt="Hand rehabilitation glove product view"
               className="mx-auto w-full max-w-sm rounded-2xl bg-white object-contain shadow-lg sm:max-w-md"
             />

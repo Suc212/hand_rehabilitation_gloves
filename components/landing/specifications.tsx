@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Activity, Battery, Hand, Ruler, Settings, ShieldCheck, Timer, Waves } from "lucide-react"
 
 import { OrderCta } from "@/components/landing/order-cta"
@@ -72,8 +73,11 @@ export function Specifications() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <div className="overflow-hidden rounded-2xl bg-card shadow-lg">
-            <img
+            <Image
               src="/images/Img 5.avif"
+              width={960}
+              height={960}
+              sizes="(min-width: 1280px) 596px, (min-width: 640px) calc(50vw - 36px), calc(100vw - 32px)"
               alt="Hand rehabilitation glove component detail"
               className="aspect-square w-full bg-white object-contain p-4"
             />
@@ -83,8 +87,11 @@ export function Specifications() {
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl bg-card shadow-lg">
-            <img
+            <Image
               src="/images/Img 6.avif"
+              width={960}
+              height={960}
+              sizes="(min-width: 1280px) 596px, (min-width: 640px) calc(50vw - 36px), calc(100vw - 32px)"
               alt="Hand rehabilitation glove fit and strap detail"
               className="aspect-square w-full bg-white object-contain p-4"
             />

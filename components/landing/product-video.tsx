@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { OrderCta } from "@/components/landing/order-cta"
 
 const conditions = [
@@ -25,8 +26,11 @@ export function ProductVideo() {
               motor control across different recovery needs.
             </p>
             <div className="mt-8 overflow-hidden rounded-2xl bg-white shadow-lg">
-              <img
+              <Image
                 src="/images/Img 8.avif"
+                width={800}
+                height={800}
+                sizes="(min-width: 1280px) 500px, (min-width: 1024px) 40vw, calc(100vw - 48px)"
                 alt="Hand rehabilitation glove in a therapy setting"
                 className="aspect-[4/3] w-full object-contain p-4"
               />
