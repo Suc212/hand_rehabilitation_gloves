@@ -26,7 +26,7 @@ export const products = {
     badge: "",
     headline: "The Hands are the fastest route to",
     headlineAccent: "stroke recovery",
-    description: "Stroke recovery can feel overwhelming. Start with an everyday point of contact: the hands. Gentle, repeated hand movement practice can help the brain strengthen and reorganise connections, supporting the relearning of everyday skills. Build a manageable routine, one movement at a time, alongside guidance from a rehabilitation professional.",
+    description: "Recovering from a stroke can be stressful. Working with your hands is the key to a quicker recovery; hand training helps rebuild neuronal pathways to the brain, and several patients are making significant progress at the moment.",
     benefits: [
       "Assists finger opening and closing",
       "Adjustable settings for comfortable practice",
