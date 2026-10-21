@@ -9,7 +9,7 @@ const { props } = getImageProps({
   loading: "eager",
   fetchPriority: "high",
   quality: 75,
-  sizes: "(min-width: 640px) 448px, (min-width: 416px) 384px, calc(100vw - 32px)",
+  sizes: "(min-width: 1280px) 552px, (min-width: 1024px) calc((100vw - 176px) / 2), (min-width: 640px) calc(100vw - 80px), calc(100vw - 24px)",
 })
 
 // Measured at the unchanged default quality: 384w = 20.8 KB, 672w = 39.3 KB,
@@ -20,8 +20,21 @@ const srcSet = [
   `${encodeURI(source)} 935w`,
 ].join(", ")
 
-export function ProductImage({ alt }: { alt: string }) {
+export function ProductImage({ alt, caregiver = false }: { alt: string; caregiver?: boolean }) {
+  if (caregiver) {
+    const { props: caregiverProps } = getImageProps({
+      src: "/images/Images SP/dark-hand-grip-square.avif",
+      alt,
+      width: 720,
+      height: 720,
+      loading: "eager",
+      fetchPriority: "high",
+      quality: 75,
+      sizes: "(min-width: 1280px) 552px, (min-width: 1024px) calc((100vw - 176px) / 2), (min-width: 640px) calc(100vw - 80px), calc(100vw - 24px)",
+    })
+    return <img {...caregiverProps} className="block aspect-square h-auto w-full object-contain" />
+  }
   // getImageProps generates the framework's image attributes on the server;
   // this static hero needs no image-component hydration or load handler.
-  return <img {...props} src={source} srcSet={srcSet} alt={alt} className="mx-auto w-full max-w-sm rounded-2xl bg-white object-contain shadow-lg sm:max-w-md" />
+  return <img {...props} src={source} srcSet={srcSet} alt={alt} className="block h-auto w-full object-contain" />
 }

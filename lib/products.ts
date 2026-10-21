@@ -26,7 +26,7 @@ export const products = {
     badge: "",
     headline: "The Hands are the fastest route to",
     headlineAccent: "stroke recovery",
-    description: "Support someone you care for with assisted hand movement practice at home. Adjustable settings and guided finger opening and closing make it easier to build a short, regular routine alongside professional guidance.",
+    description: "Stroke recovery can feel overwhelming. Start with an everyday point of contact: the hands. Gentle, repeated hand movement practice can help the brain strengthen and reorganise connections, supporting the relearning of everyday skills. Build a manageable routine, one movement at a time, alongside guidance from a rehabilitation professional.",
     benefits: [
       "Assists finger opening and closing",
       "Adjustable settings for comfortable practice",

@@ -8,10 +8,11 @@ import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
 
 export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: ProductId }) {
   const product = products[productId]
+  const caregiver = productId === "rehab-helper-gloves"
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="mx-auto max-w-7xl px-4 pb-10 pt-0 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div className={`grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-12 ${caregiver ? "items-start" : "items-center"}`}>
           <div className="space-y-6 sm:space-y-8">
             {product.badge && (
               <Badge variant="secondary" className="px-3 py-1 text-xs sm:text-sm font-medium">
@@ -87,9 +88,8 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
             </div>
           </div>
 
-          <div className="relative order-first lg:order-last">
-            <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5" />
-            <ProductImage alt={`${product.name} product view`} />
+          <div className="relative order-first -mx-4 overflow-hidden bg-[#e1ebdc] p-3 sm:mx-0 sm:p-4 lg:order-last">
+            <ProductImage caregiver={caregiver} alt={caregiver ? "Close-up of hands practising a grip" : `${product.name} product view`} />
           </div>
         </div>
       </div>

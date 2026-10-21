@@ -37,7 +37,7 @@ try {
       }
     })
     const candidate = Number(new URL(result.currentSrc).searchParams.get("w") || 935)
-    const expectedCssWidth = width < 640 ? Math.min(width - 32, 384) : 448
+    const expectedCssWidth = width < 640 ? width - 24 : width < 1024 ? width - 80 : width < 1280 ? (width - 176) / 2 : 552
     assert.equal(result.cssWidth, expectedCssWidth)
     assert.ok(Math.abs(result.cssWidth / result.cssHeight - 935 / 960) < 0.002)
     assert.equal(result.width, "935")
@@ -45,8 +45,10 @@ try {
     assert.equal(result.loading, "eager")
     assert.equal(result.fetchPriority, "high")
     assert.ok(result.srcset.includes("320w") && result.srcset.includes("935w"))
-    assert.ok(candidate >= expectedCssWidth * dpr)
-    assert.ok(candidate < expectedCssWidth * dpr * 1.35)
+    const targetWidth = Math.min(expectedCssWidth * dpr, 935)
+    assert.ok(candidate >= targetWidth)
+    // The final source candidate is 935w after 672w (a 1.392x step).
+    assert.ok(candidate < targetWidth * 1.4)
     assert.ok(result.imagePreloads <= 1)
     assert.equal(heroRequests.length, 1, "Hero must be downloaded only once")
     assert.ok(await page.$('img[loading="lazy"]'))
