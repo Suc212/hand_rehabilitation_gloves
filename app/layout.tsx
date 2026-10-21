@@ -4,6 +4,7 @@ import { Inter, Geist_Mono } from "next/font/google"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
+import { MetaEventQueue } from "@/components/analytics/meta-event-queue"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
@@ -61,6 +62,7 @@ export default function RootLayout({
           />
         </noscript>
         <FreeDeliveryBanner />
+        <MetaEventQueue />
         {children}
         <Analytics />
       </body>

@@ -2,14 +2,7 @@
 
 import { useEffect } from "react"
 import type { OrderReceipt } from "@/lib/order-receipt"
-
-type Pixel = ((...args: unknown[]) => void) & { callMethod?: (...args: unknown[]) => void }
-
-declare global {
-  interface Window {
-    fbq?: Pixel
-  }
-}
+import { commerceParameters, flushPendingMetaEvents, isMetaPixelReady } from "@/lib/meta-pixel"
 
 function hasCookie(name: string) {
   return document.cookie.split(";").some((cookie) => cookie.trim() === `${name}=1`)
@@ -52,19 +45,13 @@ export function PurchaseEvent({ receipt, productName, productPath }: {
 
     const track = () => {
       // The base pixel loads lazily. Wait until its library can process events.
-      if (typeof window.fbq !== "function" || typeof window.fbq.callMethod !== "function") return
+      if (!isMetaPixelReady()) return
+      flushPendingMetaEvents()
       if (!claimEvent(key, cookieName)) return
       try {
-        window.fbq("track", "Purchase", {
-          value: totalPrice,
-          currency: "GHS",
-          content_type: "product",
-          content_ids: [productId],
-          content_name: productName,
-          contents: [{ id: productId, quantity, item_price: totalPrice / quantity }],
-          num_items: quantity,
+        window.fbq!("track", "Purchase", {
+          ...commerceParameters({ productId, productName, productPath, quantity, totalPrice }),
           order_id: orderId,
-          landing_page: productPath,
         }, { eventID: eventId })
       } catch {
         // Allow a future attempt if the pixel call itself failed.

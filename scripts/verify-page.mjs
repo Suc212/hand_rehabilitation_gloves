@@ -40,6 +40,7 @@ try {
     }, { once: true })
   })
   const purchases = () => pixelCalls.filter((args) => args[0] === "track" && args[1] === "Purchase")
+  const carts = () => pixelCalls.filter((args) => args[0] === "track" && args[1] === "AddToCart")
   const waitForPixel = () => page.waitForFunction(() => typeof window.fbq?.callMethod === "function")
   page.on("pageerror", (error) => errors.push(error.message))
   await page.setRequestInterception(true)
@@ -72,6 +73,7 @@ try {
   assert.match(await page.$eval("h1", (heading) => heading.textContent), /No recent order/)
   await waitForPixel()
   assert.equal(purchases().length, 0, "Opening success without an accepted order must not emit Purchase")
+  assert.equal(carts().length, 0, "Opening a page must not emit AddToCart")
   assert.equal(await page.$('a[href="/"]'), null)
   await page.goto(baseUrl, { waitUntil: "networkidle0" })
   assert.equal(new URL(page.url()).pathname, productPath, "The unfinished homepage must redirect to the product")
@@ -97,6 +99,22 @@ try {
   assert.equal(await page.$eval('input[name="quantity"]:checked', (input) => input.value), "3")
   await page.click('label[for="qty-1"]')
   assert.equal(await page.$eval('input[name="quantity"]:checked', (input) => input.value), "1")
+  // The requested trigger is the button click, even if browser validation stops submission.
+  await page.click('button[type="submit"]')
+  await page.waitForFunction(() => window.__pixelCalls.some((args) => args[0] === "track" && args[1] === "AddToCart"))
+  assert.equal(carts().length, 1)
+  assert.equal(orders.length, 0)
+  assert.equal(purchases().length, 0)
+  assert.deepEqual(carts()[0][2], {
+    value: 2000,
+    currency: "GHS",
+    content_type: "product",
+    content_ids: ["hand-rehabilitation-glove"],
+    content_name: "Hand Rehabilitation Glove",
+    contents: [{ id: "hand-rehabilitation-glove", quantity: 1, item_price: 2000 }],
+    num_items: 1,
+    landing_page: productPath,
+  })
   await page.type("#firstName", "Test")
   await page.type("#lastName", "Customer")
   await page.type("#phone", "0200000000")
@@ -108,6 +126,7 @@ try {
   assert.match(await page.$eval('[role="alert"]', (alert) => alert.textContent), /Test submission failed/)
   assert.equal(await page.$eval('button[type="submit"]', (button) => button.disabled), false)
   assert.equal(purchases().length, 0, "A failed order must not emit Purchase")
+  assert.equal(carts().length, 2, "Each submit-button click emits AddToCart, including failed submissions")
   failOrder = false
   await Promise.all([
     page.waitForNavigation({ waitUntil: "networkidle0" }),
@@ -116,6 +135,8 @@ try {
   assert.equal(new URL(page.url()).pathname, "/order-success")
   await page.waitForFunction(() => window.__pixelCalls.some((args) => args[0] === "track" && args[1] === "Purchase"))
   assert.equal(purchases().length, 1)
+  assert.equal(carts().length, 3)
+  assert.ok(pixelCalls.indexOf(carts()[2]) < pixelCalls.indexOf(purchases()[0]), "AddToCart precedes Purchase")
   assert.deepEqual(purchases()[0], ["track", "Purchase", {
     value: 2000,
     currency: "GHS",
@@ -145,6 +166,7 @@ try {
   await page.reload({ waitUntil: "networkidle0" })
   await waitForPixel()
   assert.equal(purchases().length, 1, "Refreshing must not emit another Purchase")
+  assert.equal(carts().length, 3, "Refreshing success must not emit AddToCart")
   assert.equal(await page.$eval("[data-order-reference]", (reference) => reference.textContent), "test-order-123")
   assert.equal(orders.length, 2, "Refreshing confirmation must not resubmit the order")
   await page.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 1 })
@@ -159,7 +181,7 @@ try {
     for (const method of ["getItem", "setItem", "removeItem"]) {
       const original = Storage.prototype[method]
       Storage.prototype[method] = function (key, ...args) {
-        if (key.startsWith("korret:meta:")) throw new Error("Storage blocked for this test")
+        if (key.startsWith("korret:meta:purchase_")) throw new Error("Storage blocked for this test")
         return original.call(this, key, ...args)
       }
     }
@@ -179,6 +201,8 @@ try {
   await page.type("#phone", "0200000000")
   await page.type("#whatsapp", "0200000000")
   await page.type("#address", "Test address")
+  // Force a not-yet-ready pixel: this click must survive the full-page redirect.
+  await page.evaluate(() => { delete window.fbq.callMethod })
   await Promise.all([
     page.waitForNavigation({ waitUntil: "networkidle0" }),
     page.click('button[type="submit"]'),
@@ -186,6 +210,19 @@ try {
   assert.equal(new URL(page.url()).pathname, "/order-success")
   await page.waitForFunction(() => window.__pixelCalls.some((args) => args[0] === "track" && args[1] === "Purchase"))
   assert.equal(purchases().length, 2, "A new order must emit its own Purchase")
+  assert.equal(carts().length, 4, "The helper-page AddToCart must survive lazy loading and the redirect")
+  assert.deepEqual(carts()[3][2], {
+    value: 3600,
+    currency: "GHS",
+    content_type: "product",
+    content_ids: ["rehab-helper-gloves"],
+    content_name: "Rehab Helper Gloves",
+    contents: [{ id: "rehab-helper-gloves", quantity: 2, item_price: 1800 }],
+    num_items: 2,
+    landing_page: helperPath,
+  })
+  assert.ok(pixelCalls.indexOf(carts()[3]) < pixelCalls.indexOf(purchases()[1]), "Queued AddToCart is flushed before Purchase")
+  assert.equal(new Set(carts().map((event) => event[3].eventID)).size, 4)
   assert.equal(purchases()[1][2].value, 3600)
   assert.equal(purchases()[1][2].currency, "GHS")
   assert.deepEqual(purchases()[1][2].content_ids, ["rehab-helper-gloves"])
@@ -204,6 +241,7 @@ try {
   await page.reload({ waitUntil: "networkidle0" })
   await waitForPixel()
   assert.equal(purchases().length, 2, "Cookie fallback must prevent a repeat Purchase when localStorage is blocked")
+  assert.equal(carts().length, 4, "Flushed AddToCart must not replay on refresh")
   assert.equal(await page.$eval("[data-order-product]", (product) => product.textContent), "Rehab Helper Gloves")
   assert.equal(orders.length, 3)
   await Promise.all([
@@ -212,7 +250,7 @@ try {
   ])
   await page.waitForSelector('button[type="submit"]')
   assert.deepEqual(errors, [])
-  console.log("PASS: both product funnels; Purchase only after accepted orders; correct values, currency, variants, and unique event IDs; lazy pixel readiness; no repeat Purchase on refresh (including blocked localStorage); no real orders or Meta events sent")
+  console.log("PASS: shared AddToCart click tracking on both pages, correct quantity/value/variant, validation and failed-submit clicks, queued AddToCart before Purchase across redirects, no repeated events on refresh, Purchase deduplication with storage fallback; no real orders or Meta events sent")
 } finally {
   await browser.close()
 }

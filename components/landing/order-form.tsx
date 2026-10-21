@@ -11,6 +11,7 @@ import { Package, ShieldCheck, Banknote } from "lucide-react"
 import { ORIGINAL_UNIT_PRICE, UNIT_PRICE, priceTiers } from "@/lib/pricing"
 import { ORDER_SUCCESS_PATH } from "@/lib/routes"
 import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
+import { trackAddToCart } from "@/lib/meta-pixel"
 
 function Label({ className = "", ...props }: React.ComponentProps<"label">) {
   return <label className={`flex items-center gap-2 text-sm leading-none font-medium ${className}`} {...props} />
@@ -320,7 +321,13 @@ export function OrderForm({ productId = DEFAULT_PRODUCT_ID }: { productId?: Prod
                 </p>
               </div>
 
-              <Button type="submit" size="lg" className="w-full min-h-14 h-auto whitespace-normal py-3 text-sm sm:text-base font-semibold" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full min-h-14 h-auto whitespace-normal py-3 text-sm sm:text-base font-semibold"
+                disabled={isSubmitting}
+                onClick={() => trackAddToCart({ productId, productName: product.name, productPath: product.path, quantity: selectedQuantity, totalPrice: selectedOption.totalPrice })}
+              >
                 <Package className="mr-2 h-5 w-5" />
                 {isSubmitting
                   ? "Processing..."
