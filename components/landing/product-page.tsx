@@ -10,6 +10,8 @@ import { Reviews } from "@/components/landing/reviews"
 import { DeliveryPayment } from "@/components/landing/delivery-payment"
 import { FAQ } from "@/components/landing/faq"
 import { OrderForm } from "@/components/landing/order-form"
+import { OrderContactFields } from "@/components/landing/order-contact-fields"
+import { buttonVariants } from "@/components/ui/button"
 import { Footer } from "@/components/landing/footer"
 import { products, type ProductId } from "@/lib/products"
 
@@ -26,7 +28,11 @@ export function ProductLandingPage({ productId }: { productId: ProductId }) {
         <OrderProcess />
         <DeliveryPayment />
         <FAQ />
-        <OrderForm productId={productId} />
+        <OrderForm
+          productId={productId}
+          contactFields={<OrderContactFields />}
+          submitClassName={buttonVariants({ size: "lg", className: "w-full min-h-14 h-auto whitespace-normal py-3 text-sm sm:text-base font-semibold" })}
+        />
       </main>
       <Footer productPath={products[productId].path} />
     </>

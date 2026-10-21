@@ -1,4 +1,4 @@
-import Image from "next/image"
+import { ProductImage } from "@/components/landing/product-image"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { DynamicOrderCount } from "@/components/landing/dynamic-order-count"
@@ -87,18 +87,7 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
 
           <div className="relative order-first lg:order-last">
             <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5" />
-            <Image
-              src="/images/Img 1.avif"
-              width={935}
-              height={960}
-              // The supplied AVIF is smaller than the generated WebP at this display size.
-              unoptimized
-              preload
-              fetchPriority="high"
-              sizes="(min-width: 640px) 448px, (min-width: 416px) 384px, calc(100vw - 32px)"
-              alt={`${product.name} product view`}
-              className="mx-auto w-full max-w-sm rounded-2xl bg-white object-contain shadow-lg sm:max-w-md"
-            />
+            <ProductImage alt={`${product.name} product view`} />
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { PRODUCT_PATH } from "@/lib/routes"
 
 export function Footer({ productPath = PRODUCT_PATH }: { productPath?: string }) {
@@ -18,9 +17,9 @@ export function Footer({ productPath = PRODUCT_PATH }: { productPath?: string })
           </p>
 
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link href={productPath} prefetch={false} className="hover:text-foreground transition-colors">Product details</Link>
-            <Link href={`${productPath}#delivery`} prefetch={false} className="hover:text-foreground transition-colors">Delivery</Link>
-            <Link href={`${productPath}#faq`} prefetch={false} className="hover:text-foreground transition-colors">FAQs</Link>
+            <a href={productPath} className="hover:text-foreground transition-colors">Product details</a>
+            <a href={`${productPath}#delivery`} className="hover:text-foreground transition-colors">Delivery</a>
+            <a href={`${productPath}#faq`} className="hover:text-foreground transition-colors">FAQs</a>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Geist_Mono } from "next/font/google"
 import { cookies } from "next/headers"
 import Link from "next/link"
 import { ArrowRight, Check, CheckCircle2, MessageCircle, PackageCheck, Truck } from "lucide-react"
@@ -7,6 +8,8 @@ import { ORDER_RECEIPT_COOKIE, readOrderReceipt } from "@/lib/order-receipt"
 import { DEFAULT_PRODUCT_ID, products } from "@/lib/products"
 import { Footer } from "@/components/landing/footer"
 import { PurchaseEvent } from "@/components/analytics/purchase-event"
+
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" })
 
 export const metadata: Metadata = {
   title: "Your Order | Korret Stores",
@@ -45,7 +48,7 @@ export default async function OrderSuccessPage() {
   return (
     <>
     <PurchaseEvent receipt={receipt} productName={product.name} productPath={product.path} />
-    <main id="main-content" className="flex-1 bg-primary/5 px-4 py-12 sm:px-6 sm:py-20" tabIndex={-1}>
+    <main id="main-content" className={`${geistMono.variable} flex-1 bg-primary/5 px-4 py-12 sm:px-6 sm:py-20`} tabIndex={-1}>
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
           <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground"><Check aria-hidden="true" className="h-8 w-8" /></span>

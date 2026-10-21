@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
@@ -8,7 +8,6 @@ import { MetaEventQueue } from "@/components/analytics/meta-event-queue"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" })
 
 export const metadata: Metadata = {
   title: "Korret Stores | Support for Everyday Independence",
@@ -50,7 +49,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.variable} ${geistMono.variable} flex min-h-screen flex-col font-sans antialiased`}>
+      <body className={`${inter.variable} flex min-h-screen flex-col font-sans antialiased`}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:p-4 focus:text-primary focus:shadow-lg">Skip to content</a>
         <noscript>
           <img

@@ -4,18 +4,11 @@ import type React from "react"
 import Image from "next/image"
 
 import { useState, useMemo } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Package, ShieldCheck, Banknote } from "lucide-react"
 import { ORIGINAL_UNIT_PRICE, UNIT_PRICE, priceTiers } from "@/lib/pricing"
 import { ORDER_SUCCESS_PATH } from "@/lib/routes"
 import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
 import { trackAddToCart } from "@/lib/meta-pixel"
-
-function Label({ className = "", ...props }: React.ComponentProps<"label">) {
-  return <label className={`flex items-center gap-2 text-sm leading-none font-medium ${className}`} {...props} />
-}
 
 const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPrice, discount }) => {
 
@@ -37,7 +30,11 @@ const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPri
   }
 })
 
-export function OrderForm({ productId = DEFAULT_PRODUCT_ID }: { productId?: ProductId }) {
+export function OrderForm({ productId = DEFAULT_PRODUCT_ID, contactFields, submitClassName }: {
+  productId?: ProductId
+  contactFields: React.ReactNode
+  submitClassName: string
+}) {
   const product = products[productId]
   const [selectedQuantity, setSelectedQuantity] = useState(2)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -197,97 +194,7 @@ export function OrderForm({ productId = DEFAULT_PRODUCT_ID }: { productId?: Prod
                 </div>
               </fieldset>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName">
-                    First Name <span className="text-destructive">*</span>
-                  </Label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    autoComplete="given-name"
-                    placeholder="Kwame"
-                    required
-                    className="h-12 text-base"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lastName">
-                    Last Name <span className="text-destructive">*</span>
-                  </Label>
-                  <Input
-                    id="lastName"
-                    name="lastName"
-                    autoComplete="family-name"
-                    placeholder="Asante"
-                    required
-                    className="h-12 text-base"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="phone">
-                  Phone Number <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  inputMode="tel"
-                  placeholder="0XX XXX XXXX"
-                  required
-                  className="h-12 text-base"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="whatsapp">
-                  WhatsApp Number <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="whatsapp"
-                  name="whatsapp"
-                  type="tel"
-                  autoComplete="tel"
-                  inputMode="tel"
-                  placeholder="0XX XXX XXXX"
-                  required
-                  className="h-12 text-base"
-                />
-                <p className="text-xs text-muted-foreground">We'll contact you on WhatsApp to confirm your order</p>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email">
-                  Email <span className="text-muted-foreground text-xs">(optional)</span>
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  inputMode="email"
-                  placeholder="kwame@example.com"
-                  className="h-12 text-base"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="address">
-                  Delivery Address <span className="text-destructive">*</span>
-                </Label>
-                <Textarea
-                  id="address"
-                  name="address"
-                  autoComplete="street-address"
-                  placeholder="e.g. Spintex Road, near Shell Filling Station, Accra"
-                  rows={3}
-                  required
-                  className="text-base resize-none"
-                />
-              </div>
+              {contactFields}
 
               <div className="rounded-xl bg-muted/50 p-4">
                 <div className="flex items-center justify-between text-sm">
@@ -321,10 +228,10 @@ export function OrderForm({ productId = DEFAULT_PRODUCT_ID }: { productId?: Prod
                 </p>
               </div>
 
-              <Button
+              <button
+                data-slot="button"
                 type="submit"
-                size="lg"
-                className="w-full min-h-14 h-auto whitespace-normal py-3 text-sm sm:text-base font-semibold"
+                className={submitClassName}
                 disabled={isSubmitting}
                 onClick={() => trackAddToCart({ productId, productName: product.name, productPath: product.path, quantity: selectedQuantity, totalPrice: selectedOption.totalPrice })}
               >
@@ -332,7 +239,7 @@ export function OrderForm({ productId = DEFAULT_PRODUCT_ID }: { productId?: Prod
                 {isSubmitting
                   ? "Processing..."
                   : `Order Now - Pay GH₵${selectedOption.totalPrice.toLocaleString()} on Delivery`}
-              </Button>
+              </button>
 
               <p className="text-center text-xs text-muted-foreground">
                 No payment required now - Our team will confirm payment and delivery arrangements

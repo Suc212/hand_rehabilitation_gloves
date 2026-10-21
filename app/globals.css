@@ -1,5 +1,14 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import "tailwindcss" source(none);
+
+/* Scan application sources, not saved audits or the unused UI catalogue.
+   Register additional shared UI files here when they become part of a page. */
+@source "../app";
+@source "../components/landing";
+@source "../components/analytics";
+@source "../components/ui/badge.tsx";
+@source "../components/ui/button.tsx";
+@source "../components/ui/input.tsx";
+@source "../components/ui/textarea.tsx";
 
 @custom-variant dark (&:is(.dark *));
 
