@@ -17,12 +17,37 @@ try {
   const page = await browser.newPage()
   const errors = []
   const orders = []
+  const pixelCalls = []
+  let acceptedOrders = 0
   const baseUrl = process.env.AUDIT_URL || "http://localhost:3100"
   const productPath = "/products/hand-rehabilitation-glove"
   let failOrder = true
+  // Capture calls locally and never deliver verification events to Meta.
+  await page.exposeFunction("__recordPixelCall", (args) => pixelCalls.push(args))
+  await page.evaluateOnNewDocument(() => {
+    window.__pixelCalls = []
+    const pixel = (...args) => {
+      window.__pixelCalls.push(args)
+      window.__recordPixelCall(args)
+    }
+    window.fbq = pixel
+    // Exercise the success component while the lazy pixel is not ready yet.
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        pixel.callMethod = pixel
+        window.dispatchEvent(new Event("meta-pixel-ready"))
+      }, 1500)
+    }, { once: true })
+  })
+  const purchases = () => pixelCalls.filter((args) => args[0] === "track" && args[1] === "Purchase")
+  const waitForPixel = () => page.waitForFunction(() => typeof window.fbq?.callMethod === "function")
   page.on("pageerror", (error) => errors.push(error.message))
   await page.setRequestInterception(true)
   page.on("request", async (request) => {
+    if (/(^|\.)(facebook\.com|facebook\.net)$/.test(new URL(request.url()).hostname)) {
+      await request.abort()
+      return
+    }
     if (new URL(request.url()).pathname === "/api/orders") {
       const order = JSON.parse(request.postData())
       orders.push(order)
@@ -30,13 +55,14 @@ try {
         await request.respond({ status: 500, contentType: "application/json", body: JSON.stringify({ error: "Test submission failed. Please try again." }) })
         return
       }
-      const receipt = encodeURIComponent(JSON.stringify({ orderId: "test-order-123", productId: order.productId, quantity: Number(order.quantity), totalPrice: Number(order.totalPrice) }))
+      const orderId = `test-order-${123 + acceptedOrders++}`
+      const receipt = encodeURIComponent(JSON.stringify({ orderId, productId: order.productId, quantity: Number(order.quantity), totalPrice: Number(order.totalPrice) }))
       await request.respond({
         status: 200,
         contentType: "application/json",
         // NextResponse serializes the encoded receipt value into a cookie.
         headers: { "set-cookie": `korret_order_receipt=${encodeURIComponent(receipt)}; Path=/order-success; HttpOnly; SameSite=Lax; Max-Age=3600` },
-        body: JSON.stringify({ success: true, orderId: "test-order-123" }),
+        body: JSON.stringify({ success: true, orderId }),
       })
     } else {
       await request.continue()
@@ -44,6 +70,8 @@ try {
   })
   await page.goto(`${baseUrl}/order-success`, { waitUntil: "networkidle0" })
   assert.match(await page.$eval("h1", (heading) => heading.textContent), /No recent order/)
+  await waitForPixel()
+  assert.equal(purchases().length, 0, "Opening success without an accepted order must not emit Purchase")
   assert.equal(await page.$('a[href="/"]'), null)
   await page.goto(baseUrl, { waitUntil: "networkidle0" })
   assert.equal(new URL(page.url()).pathname, productPath, "The unfinished homepage must redirect to the product")
@@ -79,12 +107,26 @@ try {
   assert.equal(new URL(page.url()).pathname, productPath)
   assert.match(await page.$eval('[role="alert"]', (alert) => alert.textContent), /Test submission failed/)
   assert.equal(await page.$eval('button[type="submit"]', (button) => button.disabled), false)
+  assert.equal(purchases().length, 0, "A failed order must not emit Purchase")
   failOrder = false
   await Promise.all([
     page.waitForNavigation({ waitUntil: "networkidle0" }),
     page.click('button[type="submit"]'),
   ])
   assert.equal(new URL(page.url()).pathname, "/order-success")
+  await page.waitForFunction(() => window.__pixelCalls.some((args) => args[0] === "track" && args[1] === "Purchase"))
+  assert.equal(purchases().length, 1)
+  assert.deepEqual(purchases()[0], ["track", "Purchase", {
+    value: 2000,
+    currency: "GHS",
+    content_type: "product",
+    content_ids: ["hand-rehabilitation-glove"],
+    content_name: "Hand Rehabilitation Glove",
+    contents: [{ id: "hand-rehabilitation-glove", quantity: 1, item_price: 2000 }],
+    num_items: 1,
+    order_id: "test-order-123",
+    landing_page: productPath,
+  }, { eventID: "purchase_test-order-123" }])
   assert.match(await page.$eval("h1", (heading) => heading.textContent), /order has been received/)
   assert.equal(await page.$eval("[data-order-reference]", (reference) => reference.textContent), "test-order-123")
   assert.equal(await page.$eval("[data-order-total]", (total) => total.textContent), "GH₵2,000")
@@ -101,6 +143,8 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true)
   await page.screenshot({ path: join(screenshotDirectory, "order-success-mobile.png"), fullPage: true })
   await page.reload({ waitUntil: "networkidle0" })
+  await waitForPixel()
+  assert.equal(purchases().length, 1, "Refreshing must not emit another Purchase")
   assert.equal(await page.$eval("[data-order-reference]", (reference) => reference.textContent), "test-order-123")
   assert.equal(orders.length, 2, "Refreshing confirmation must not resubmit the order")
   await page.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 1 })
@@ -109,6 +153,17 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true)
 
   const helperPath = "/products/rehab-helper-gloves"
+  // For the second order, make localStorage unavailable for tracking markers.
+  // Its cookie fallback must still prevent repeat events after a refresh.
+  await page.evaluateOnNewDocument(() => {
+    for (const method of ["getItem", "setItem", "removeItem"]) {
+      const original = Storage.prototype[method]
+      Storage.prototype[method] = function (key, ...args) {
+        if (key.startsWith("korret:meta:")) throw new Error("Storage blocked for this test")
+        return original.call(this, key, ...args)
+      }
+    }
+  })
   await page.setViewport({ width: 375, height: 812, deviceScaleFactor: 1 })
   await page.goto(`${baseUrl}${helperPath}`, { waitUntil: "networkidle0" })
   assert.match(await page.$eval("h1", (heading) => heading.textContent), /Help Them Take the Next Small Step/)
@@ -129,6 +184,14 @@ try {
     page.click('button[type="submit"]'),
   ])
   assert.equal(new URL(page.url()).pathname, "/order-success")
+  await page.waitForFunction(() => window.__pixelCalls.some((args) => args[0] === "track" && args[1] === "Purchase"))
+  assert.equal(purchases().length, 2, "A new order must emit its own Purchase")
+  assert.equal(purchases()[1][2].value, 3600)
+  assert.equal(purchases()[1][2].currency, "GHS")
+  assert.deepEqual(purchases()[1][2].content_ids, ["rehab-helper-gloves"])
+  assert.equal(purchases()[1][2].num_items, 2)
+  assert.equal(purchases()[1][2].landing_page, helperPath)
+  assert.equal(purchases()[1][3].eventID, "purchase_test-order-124")
   assert.equal(orders.length, 3)
   assert.equal(orders[2].productId, "rehab-helper-gloves")
   assert.equal(orders[2].quantity, "2")
@@ -139,6 +202,8 @@ try {
   assert.equal(await page.$(`a[href^="${productPath}"]`), null)
   assert.ok(await page.$(`a[href="${helperPath}#order"]`))
   await page.reload({ waitUntil: "networkidle0" })
+  await waitForPixel()
+  assert.equal(purchases().length, 2, "Cookie fallback must prevent a repeat Purchase when localStorage is blocked")
   assert.equal(await page.$eval("[data-order-product]", (product) => product.textContent), "Rehab Helper Gloves")
   assert.equal(orders.length, 3)
   await Promise.all([
@@ -147,7 +212,7 @@ try {
   ])
   await page.waitForSelector('button[type="submit"]')
   assert.deepEqual(errors, [])
-  console.log("PASS: homepage blocked, no header/breadcrumb/home links, mobile/desktop layout, both audience variants, order source IDs, variant-specific receipts and return links, failed-order recovery, refresh without resubmission, and no browser errors")
+  console.log("PASS: both product funnels; Purchase only after accepted orders; correct values, currency, variants, and unique event IDs; lazy pixel readiness; no repeat Purchase on refresh (including blocked localStorage); no real orders or Meta events sent")
 } finally {
   await browser.close()
 }
