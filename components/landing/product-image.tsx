@@ -20,10 +20,10 @@ const srcSet = [
   `${encodeURI(source)} 935w`,
 ].join(", ")
 
-export function ProductImage({ alt, caregiver = false }: { alt: string; caregiver?: boolean }) {
+export function ProductImage({ alt, caregiver = false, darkHand = false }: { alt: string; caregiver?: boolean; darkHand?: boolean }) {
   if (caregiver) {
     const { props: caregiverProps } = getImageProps({
-      src: "/images/Images SP/rehab-glove-square.avif",
+      src: darkHand ? "/images/Images SP/dark-hand-grip-square.avif" : "/images/Images SP/rehab-glove-square.avif",
       alt,
       width: 720,
       height: 720,
