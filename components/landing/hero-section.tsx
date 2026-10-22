@@ -33,9 +33,11 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
                 <Star className="h-4 w-4 fill-primary" />
                 <span>4.8/5 from 500+ customers</span>
               </div>
-              <div className="rounded-full bg-secondary px-3 py-1.5 font-medium text-secondary-foreground">
-                <DynamicOrderCount />
-              </div>
+              {!caregiver && (
+                <div className="rounded-full bg-secondary px-3 py-1.5 font-medium text-secondary-foreground">
+                  <DynamicOrderCount />
+                </div>
+              )}
             </div>
 
             <ul className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">

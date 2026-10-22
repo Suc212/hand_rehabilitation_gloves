@@ -28,11 +28,10 @@ export const products = {
     headlineAccent: "stroke recovery",
     description: "Recovering from a stroke can be stressful. Working with your hands is the key to a quicker recovery; hand training helps rebuild neuronal pathways to the brain, and several patients are making significant progress at the moment.",
     benefits: [
-      "Assists finger opening and closing",
-      "Adjustable settings for comfortable practice",
-      "Fits short, caregiver-supported sessions",
-      "Single units and family bundles available",
-      "Free delivery in Ghana",
+      "Recover your grip faster",
+      "Rebuild neural pathways",
+      "Train independently without needing help",
+      "Reduce emotional stress",
     ],
   },
 } satisfies Record<ProductId, { name: string; path: string; badge: string; headline: string; headlineAccent: string; description: string; benefits: string[] }>

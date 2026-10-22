@@ -13,8 +13,8 @@ export function CaregiverSupport() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Support for the person beside them</p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">A clearer routine for the person you care for.</h2>
-          <p className="mt-5 leading-relaxed text-muted-foreground">Helping a parent, partner, or family member with daily exercises can feel overwhelming. Rehab Helper Gloves offer assisted movement practice you can make part of a familiar home routine.</p>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">A clear pathway to faster recovery.</h2>
+          <p className="mt-5 leading-relaxed text-muted-foreground">The path to recovery after a stroke can feel unclear and overwhelming. A practical place to start is with your hands: repeated movement and sensory feedback send signals to the brain, helping it strengthen and reorganise the connections used for everyday tasks. With consistent practice and professional guidance, small movements can become meaningful steps forward.</p>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {steps.map(({ icon: Icon, title, text }) => (
