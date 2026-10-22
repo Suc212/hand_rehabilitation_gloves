@@ -191,8 +191,8 @@ try {
   })
   await page.setViewport({ width: 375, height: 812, deviceScaleFactor: 1 })
   await page.goto(`${baseUrl}${helperPath}`, { waitUntil: "networkidle0" })
-  assert.match(await page.$eval("h1", (heading) => heading.textContent), /Help Them Take the Next Small Step/)
-  assert.match(await page.$eval("main", (main) => main.textContent), /For Families & Caregivers/)
+  assert.match(await page.$eval("h1", (heading) => heading.textContent), /The Hands are the fastest route to stroke recovery/)
+  assert.match(await page.$eval("main", (main) => main.textContent), /A clearer routine for the person you care for/)
   assert.equal(await page.$("header"), null)
   assert.equal(await page.$('nav[aria-label="Breadcrumb"]'), null)
   assert.equal(await page.$('a[href="/"]'), null)
@@ -252,8 +252,33 @@ try {
     page.click(`a[href="${helperPath}#order"]`),
   ])
   await page.waitForSelector('button[type="submit"]')
+
+  const recoveryPath = "/products/stroke-recovery-gloves"
+  await page.goto(`${baseUrl}${recoveryPath}`, { waitUntil: "networkidle0" })
+  assert.match(await page.$eval("h1", (heading) => heading.textContent), /The Hands are the fastest route to stroke recovery/)
+  const recoveryText = await page.$eval("main", (main) => main.textContent)
+  assert.match(recoveryText, /A clear pathway to faster recovery/)
+  assert.doesNotMatch(recoveryText, /A clearer routine for the person you care for/)
+  assert.match(await page.$eval("main section img", (image) => image.currentSrc), /dark-hand-grip-square/)
+  for (const [selector, value] of [["#firstName", "Test"], ["#lastName", "Recovery"], ["#phone", "0200000000"], ["#whatsapp", "0200000000"], ["#address", "Test address"]]) {
+    await page.type(selector, value)
+  }
+  await Promise.all([page.waitForNavigation({ waitUntil: "networkidle0" }), page.click('button[type="submit"]')])
+  await page.waitForFunction(() => window.__pixelCalls.some((args) => args[0] === "track" && args[1] === "Purchase"))
+  assert.equal(orders.at(-1).productId, "stroke-recovery-gloves")
+  assert.deepEqual(carts().at(-1)[2].content_ids, ["stroke-recovery-gloves"])
+  assert.deepEqual(purchases().at(-1)[2].content_ids, ["stroke-recovery-gloves"])
+  assert.equal(purchases().at(-1)[2].landing_page, recoveryPath)
+  assert.equal(purchases().length, 3)
+  assert.equal(carts().length, 5)
+  assert.ok(await page.$(`a[href="${recoveryPath}#order"]`))
+  await page.reload({ waitUntil: "networkidle0" })
+  await waitForPixel()
+  assert.equal(purchases().length, 3)
+  assert.equal(carts().length, 5)
+  assert.equal(orders.length, 4)
   assert.deepEqual(errors, [])
-  console.log("PASS: shared AddToCart click tracking on both pages, correct quantity/value/variant, validation and failed-submit clicks, queued AddToCart before Purchase across redirects, no repeated events on refresh, Purchase deduplication with storage fallback; no real orders or Meta events sent")
+  console.log("PASS: all three product pages, distinct caregiver/recovery sections, shared checkout and correct variant events, redirects and refresh deduplication; no real orders or Meta events sent")
 } finally {
   await browser.close()
 }

@@ -21,7 +21,7 @@ export function ProductLandingPage({ productId }: { productId: ProductId }) {
       <main id="main-content" className="flex-1" tabIndex={-1}>
         <HeroSection productId={productId} />
         <TrustBadges />
-        {productId === "rehab-helper-gloves" ? <CaregiverSupport /> : <><ProblemSolution /><Benefits /></>}
+        {productId === "rehab-helper-gloves" || productId === "stroke-recovery-gloves" ? <CaregiverSupport recoveryFocused={productId === "stroke-recovery-gloves"} /> : <><ProblemSolution /><Benefits /></>}
         <Reviews />
         <ProductVideo />
         <Specifications />

@@ -8,7 +8,7 @@ import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
 
 export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: ProductId }) {
   const product = products[productId]
-  const caregiver = productId === "rehab-helper-gloves"
+  const caregiver = productId === "rehab-helper-gloves" || productId === "stroke-recovery-gloves"
   return (
     <section className="relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-0 sm:px-6 sm:py-12 lg:px-8 lg:py-16">

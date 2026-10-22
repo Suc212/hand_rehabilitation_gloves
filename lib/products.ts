@@ -1,6 +1,6 @@
-import { PRODUCT_PATH, REHAB_HELPER_PATH } from "@/lib/routes"
+import { PRODUCT_PATH, REHAB_HELPER_PATH, STROKE_RECOVERY_PATH } from "@/lib/routes"
 
-export const PRODUCT_IDS = ["hand-rehabilitation-glove", "rehab-helper-gloves"] as const
+export const PRODUCT_IDS = ["hand-rehabilitation-glove", "rehab-helper-gloves", "stroke-recovery-gloves"] as const
 export type ProductId = (typeof PRODUCT_IDS)[number]
 export const DEFAULT_PRODUCT_ID: ProductId = "hand-rehabilitation-glove"
 
@@ -23,6 +23,20 @@ export const products = {
   "rehab-helper-gloves": {
     name: "Rehab Helper Gloves",
     path: REHAB_HELPER_PATH,
+    badge: "",
+    headline: "The Hands are the fastest route to",
+    headlineAccent: "stroke recovery",
+    description: "Recovering from a stroke can be stressful. Working with your hands is the key to a quicker recovery; hand training helps rebuild neuronal pathways to the brain, and several patients are making significant progress at the moment.",
+    benefits: [
+      "Recover your grip faster",
+      "Rebuild neural pathways",
+      "Train independently without needing help",
+      "Reduce emotional stress",
+    ],
+  },
+  "stroke-recovery-gloves": {
+    name: "Rehab Helper Gloves",
+    path: STROKE_RECOVERY_PATH,
     badge: "",
     headline: "The Hands are the fastest route to",
     headlineAccent: "stroke recovery",
