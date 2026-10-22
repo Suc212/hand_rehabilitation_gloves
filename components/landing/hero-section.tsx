@@ -90,8 +90,8 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
             </div>
           </div>
 
-          <div className="relative order-first -mx-4 overflow-hidden bg-[#e1ebdc] p-3 sm:mx-0 sm:p-4 lg:order-last">
-            <ProductImage caregiver={caregiver} alt={caregiver ? "Close-up of hands practising a grip" : `${product.name} product view`} />
+          <div className="relative order-first -mx-4 overflow-hidden bg-primary/10 p-3 sm:mx-0 sm:p-4 lg:order-last">
+            <ProductImage caregiver={caregiver} alt={caregiver ? "Rehabilitation glove for assisted hand movement practice" : `${product.name} product view`} />
           </div>
         </div>
       </div>

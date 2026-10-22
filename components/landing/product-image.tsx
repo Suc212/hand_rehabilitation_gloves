@@ -23,7 +23,7 @@ const srcSet = [
 export function ProductImage({ alt, caregiver = false }: { alt: string; caregiver?: boolean }) {
   if (caregiver) {
     const { props: caregiverProps } = getImageProps({
-      src: "/images/Images SP/dark-hand-grip-square.avif",
+      src: "/images/Images SP/rehab-glove-square.avif",
       alt,
       width: 720,
       height: 720,

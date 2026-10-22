@@ -259,7 +259,7 @@ try {
   const recoveryText = await page.$eval("main", (main) => main.textContent)
   assert.match(recoveryText, /A clear pathway to faster recovery/)
   assert.doesNotMatch(recoveryText, /A clearer routine for your loved one/)
-  assert.match(await page.$eval("main section img", (image) => image.currentSrc), /dark-hand-grip-square/)
+  assert.match(await page.$eval("main section img", (image) => image.currentSrc), /rehab-glove-square/)
   for (const [selector, value] of [["#firstName", "Test"], ["#lastName", "Recovery"], ["#phone", "0200000000"], ["#whatsapp", "0200000000"], ["#address", "Test address"]]) {
     await page.type(selector, value)
   }
