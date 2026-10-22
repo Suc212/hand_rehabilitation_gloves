@@ -192,7 +192,7 @@ try {
   await page.setViewport({ width: 375, height: 812, deviceScaleFactor: 1 })
   await page.goto(`${baseUrl}${helperPath}`, { waitUntil: "networkidle0" })
   assert.match(await page.$eval("h1", (heading) => heading.textContent), /The Hands are the fastest route to stroke recovery/)
-  assert.match(await page.$eval("main", (main) => main.textContent), /A clearer routine for the person you care for/)
+  assert.match(await page.$eval("main", (main) => main.textContent), /A clearer routine for your loved one/)
   assert.equal(await page.$("header"), null)
   assert.equal(await page.$('nav[aria-label="Breadcrumb"]'), null)
   assert.equal(await page.$('a[href="/"]'), null)
@@ -258,7 +258,7 @@ try {
   assert.match(await page.$eval("h1", (heading) => heading.textContent), /The Hands are the fastest route to stroke recovery/)
   const recoveryText = await page.$eval("main", (main) => main.textContent)
   assert.match(recoveryText, /A clear pathway to faster recovery/)
-  assert.doesNotMatch(recoveryText, /A clearer routine for the person you care for/)
+  assert.doesNotMatch(recoveryText, /A clearer routine for your loved one/)
   assert.match(await page.$eval("main section img", (image) => image.currentSrc), /dark-hand-grip-square/)
   for (const [selector, value] of [["#firstName", "Test"], ["#lastName", "Recovery"], ["#phone", "0200000000"], ["#whatsapp", "0200000000"], ["#address", "Test address"]]) {
     await page.type(selector, value)
