@@ -93,3 +93,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Keep the hero and compact trust strip fully laid out. Offscreen detail
+   sections can skip rendering until near the viewport; auto remembers their
+   real height after rendering. Unsupported browsers use normal layout. */
+.product-page > section:nth-child(n + 3) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

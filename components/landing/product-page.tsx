@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils"
 export function ProductLandingPage({ productId }: { productId: ProductId }) {
   return (
     <>
-      <main id="main-content" className="flex-1" tabIndex={-1}>
+      <main id="main-content" className="product-page flex-1" tabIndex={-1}>
         <HeroSection productId={productId} />
         <TrustBadges />
         {productId === "rehab-helper-gloves" || productId === "stroke-recovery-gloves" ? <CaregiverSupport recoveryFocused={productId === "stroke-recovery-gloves"} /> : <><ProblemSolution /><Benefits /></>}

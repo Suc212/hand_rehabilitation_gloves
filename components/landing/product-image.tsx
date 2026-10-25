@@ -40,6 +40,9 @@ export function ProductImage({ alt, caregiver = false, darkHand = false }: { alt
     })
     return <img {...caregiverProps} data-hero-image decoding="sync" className="block aspect-square h-auto w-full object-contain" />
   }
+  // Match the image's responsive selection so the head preload and <img>
+  // share one request, including when a smaller optimized candidate wins.
+  preload(source, { as: "image", imageSrcSet: srcSet, imageSizes: props.sizes, fetchPriority: "high" })
   // getImageProps generates the framework's image attributes on the server;
   // this static hero needs no image-component hydration or load handler.
   return <img {...props} data-hero-image decoding="sync" src={source} srcSet={srcSet} alt={alt} className="block h-auto w-full object-contain" />

@@ -6,9 +6,14 @@ import { pathToFileURL } from "node:url"
 // tracking calls are intercepted: verification creates no real orders/events.
 const { default: puppeteer } = await import(pathToFileURL(process.argv[2]).href)
 const base = process.env.AUDIT_URL || "http://localhost:3100"
-const productId = "rehab-helper-gloves"
+const productId = process.argv[3] || "rehab-helper-gloves"
+assert.ok(["hand-rehabilitation-glove", "rehab-helper-gloves", "stroke-recovery-gloves"].includes(productId), "Unknown product")
+const standardGlove = productId === "hand-rehabilitation-glove"
+const productName = standardGlove ? "Hand Rehabilitation Glove" : "Rehab Helper Gloves"
+const headline = standardGlove ? "Regain Control of Your Hands" : "The Hands are the fastest route to"
+const heroSource = standardGlove ? "/images/Img 1.avif" : productId === "rehab-helper-gloves" ? "/images/Images SP/dark-hand-grip-square.avif" : "/images/Images SP/rehab-glove-square.avif"
 const productPath = `/products/${productId}`
-const directory = ".performance/rehab-verification"
+const directory = productId === "rehab-helper-gloves" ? ".performance/rehab-verification" : `.performance/verification-${productId}`
 mkdirSync(directory, { recursive: true })
 const browser = await puppeteer.launch({
   executablePath: process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe",
@@ -64,8 +69,8 @@ try {
   await page.setViewport({ width: 412, height: 823, deviceScaleFactor: 1.75 })
   const response = await page.goto(`${base}${productPath}`, { waitUntil: "networkidle0" })
   const html = await response.text()
-  assert.ok(html.includes("The Hands are the fastest route to"), "Hero must be in initial HTML")
-  assert.ok(html.includes("dark-hand-grip-square.avif"))
+  assert.ok(html.includes(headline), "Hero must be in initial HTML")
+  assert.ok(html.includes(heroSource.split("/").at(-1)))
   const stylesheet = html.match(/<link[^>]+rel="stylesheet"[^>]*>/)
   assert.ok(stylesheet, "Keep the measured external stylesheet")
   assert.ok(stylesheet.index < html.indexOf("<main"), "First-screen styles must be discoverable before the content")
@@ -80,6 +85,11 @@ try {
     pixelRequest: performance.getEntriesByType("resource").find((entry) => entry.name.includes("/en_US/fbevents.js"))?.startTime,
   }))
   assert.ok(initialRendering.pixelRequest >= initialRendering.fcp, "Pixel download must start after the first rendering opportunity")
+  const initialHeroRequests = await page.evaluate((source) => performance.getEntriesByType("resource").filter((entry) => {
+    const url = new URL(entry.name)
+    return decodeURIComponent(url.searchParams.get("url") || url.pathname) === source
+  }).map((entry) => ({ url: entry.name, start: entry.startTime, end: entry.responseEnd })), heroSource)
+  assert.equal(initialHeroRequests.length, 1, "Hero preload and image must select the same single resource")
   await page.evaluate(() => document.fonts.ready)
   const fonts = await page.evaluate(() => ({
     family: getComputedStyle(document.body).fontFamily,
@@ -96,13 +106,27 @@ try {
     await page.setViewport({ width, height: 823, deviceScaleFactor: 1 })
     await page.evaluate(() => window.scrollTo(0, 0))
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `Page overflow at ${width}px`)
-    const hero = await page.$eval("main section img", (img) => ({ width: img.clientWidth, height: img.clientHeight, complete: img.complete, naturalWidth: img.naturalWidth }))
+    const hero = await page.$eval("main section img", (img) => ({ width: img.clientWidth, height: img.clientHeight, complete: img.complete, naturalWidth: img.naturalWidth, naturalHeight: img.naturalHeight }))
     assert.ok(hero.complete && hero.naturalWidth > 0)
-    assert.equal(hero.width, hero.height)
+    assert.ok(Math.abs(hero.width / hero.height - hero.naturalWidth / hero.naturalHeight) < 0.01, "Hero must retain its source aspect ratio")
     await page.screenshot({ path: `${directory}/hero-${width}.png` })
     layouts.push({ width, hero })
   }
   await page.setViewport({ width: 375, height: 812, deviceScaleFactor: 1 })
+  await page.evaluate(() => window.scrollTo(0, 0))
+  await page.click('a[href="#order"]')
+  await page.waitForFunction(() => {
+    const rect = document.querySelector("#order").getBoundingClientRect()
+    return rect.top < innerHeight && rect.bottom > 0
+  })
+  // Exercise native containment activation and anchor navigation in both
+  // directions, rather than only taking an initial-viewport screenshot.
+  for (const sectionId of ["facebook-reviews", "faq", "delivery", "order"]) {
+    await page.$eval(`#${sectionId}`, (element) => element.scrollIntoView())
+    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+    assert.ok(await page.$eval(`#${sectionId}`, (element) => element.getBoundingClientRect().height > 0), `${sectionId} must render after scrolling`)
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
+  }
   await page.$eval("#order", (element) => element.scrollIntoView())
   for (const [quantity, total] of [[1, 1600], [2, 3000], [3, 4320]]) {
     await page.click(`label[for="qty-${quantity}"]`)
@@ -147,7 +171,7 @@ try {
   await page.waitForFunction(() => document.querySelector("[data-order-total]"))
   assert.equal(new URL(page.url()).pathname, "/order-success")
   assert.match(await page.$eval("[data-order-total]", (element) => element.textContent), /4,320/)
-  assert.equal(await page.$eval("[data-order-product]", (element) => element.textContent), "Rehab Helper Gloves")
+  assert.equal(await page.$eval("[data-order-product]", (element) => element.textContent), productName)
   assert.equal(orders.length, 2)
   assert.equal(orders[1].productId, productId)
   assert.equal(orders[1].quantity, "3")
@@ -155,7 +179,7 @@ try {
   assert.equal(events("Purchase").length, 1)
   const parameters = {
     value: 4320, currency: "GHS", content_type: "product",
-    content_ids: [productId], content_name: "Rehab Helper Gloves",
+    content_ids: [productId], content_name: productName,
     contents: [{ id: productId, quantity: 3, item_price: 1440 }],
     num_items: 3, landing_page: productPath,
   }
@@ -184,11 +208,11 @@ try {
   // First-screen layout and all sales copy remain available without JavaScript.
   await page.setJavaScriptEnabled(false)
   await page.goto(`${base}${productPath}`, { waitUntil: "networkidle0" })
-  assert.match(await page.$eval("h1", (element) => element.textContent), /stroke recovery/)
+  assert.ok((await page.$eval("h1", (element) => element.textContent)).includes(headline))
   assert.ok(await page.$('input[name="firstName"]'))
   assert.ok(await page.$('noscript img[src*="4632254820337295"]'))
   assert.deepEqual(errors, [])
-  const result = { passed: true, fonts, layouts, initialRendering, interceptedOrders: orders.length, pixelDownloads, pageViews: events("PageView").length, addToCarts: events("AddToCart").length, purchases: events("Purchase").length, errors }
+  const result = { passed: true, productId, fonts, layouts, initialRendering, initialHeroRequests, interceptedOrders: orders.length, pixelDownloads, pageViews: events("PageView").length, addToCarts: events("AddToCart").length, purchases: events("Purchase").length, errors }
   writeFileSync(`${directory}/results.json`, JSON.stringify(result, null, 2))
   console.log(JSON.stringify(result, null, 2))
 } finally {
