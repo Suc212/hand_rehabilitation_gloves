@@ -68,6 +68,9 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
                         {tier.quantity} {tier.quantity === 1 ? "Unit" : "Units"}
                       </p>
                       {tier.quantity > 1 && (
+                        <p className="text-xs font-medium text-primary">{tier.bundleDiscountPercent}% bundle discount</p>
+                      )}
+                      {tier.quantity > 1 && (
                         <p className="text-xs font-medium text-primary">Save GH₵{tier.discount.toLocaleString()}</p>
                       )}
                     </div>

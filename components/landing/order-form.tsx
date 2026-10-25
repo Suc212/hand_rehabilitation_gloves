@@ -10,7 +10,7 @@ import { ORDER_SUCCESS_PATH } from "@/lib/routes"
 import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
 import { trackAddToCart } from "@/lib/meta-pixel"
 
-const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPrice, discount }) => {
+const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPrice, discount, bundleDiscountPercent }) => {
 
   return {
     quantity,
@@ -23,7 +23,7 @@ const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPri
     description:
       quantity === 1
         ? "Hand Rehabilitation Glove + controller"
-        : `Bundle deal: Save GH₵${discount.toLocaleString()} - ${
+        : `Bundle deal: ${bundleDiscountPercent}% off - ${
             quantity === 2 ? "Good for family or clinic use" : "Best for therapy centers & caregivers"
           }`,
     popular: quantity === 2,
