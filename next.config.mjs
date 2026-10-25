@@ -10,7 +10,7 @@ const nextConfig = {
     ]
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   images: {
     formats: ["image/avif", "image/webp"],

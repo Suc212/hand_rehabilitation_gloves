@@ -15,7 +15,7 @@ for (let run = 1; run <= 3; run++) {
     "--only-categories=performance", "--form-factor=mobile", "--throttling-method=simulate",
     "--throttling.cpuSlowdownMultiplier=4", "--throttling.rttMs=150", "--throttling.throughputKbps=1638.4",
     "--screenEmulation.width=412", "--screenEmulation.height=823", "--screenEmulation.deviceScaleFactor=1.75",
-    "--output=json", "--output=html", `--output-path=${output}`, "--quiet",
+    "--output=json", "--output=html", "--save-assets", `--output-path=${output}`, "--quiet",
   ], { stdio: "inherit", windowsHide: true })
   if (audit.status !== 0) throw new Error(`Lighthouse run ${run} failed`)
   const report = JSON.parse(readFileSync(`${output}.report.json`, "utf8"))

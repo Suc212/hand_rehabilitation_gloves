@@ -44,7 +44,7 @@ export function PurchaseEvent({ receipt, productName, productPath }: {
     const cookieName = encodeURIComponent(key)
 
     const track = () => {
-      // The base pixel loads lazily. Wait until its library can process events.
+      // The base pixel loads asynchronously. Wait until it can process events.
       if (!isMetaPixelReady()) return
       flushPendingMetaEvents()
       if (!claimEvent(key, cookieName)) return

@@ -38,9 +38,9 @@ export function ProductImage({ alt, caregiver = false, darkHand = false }: { alt
       quality: 75,
       sizes: "(min-width: 1280px) 552px, (min-width: 1024px) calc((100vw - 176px) / 2), (min-width: 640px) calc(100vw - 80px), calc(100vw - 24px)",
     })
-    return <img {...caregiverProps} className="block aspect-square h-auto w-full object-contain" />
+    return <img {...caregiverProps} data-hero-image decoding="sync" className="block aspect-square h-auto w-full object-contain" />
   }
   // getImageProps generates the framework's image attributes on the server;
   // this static hero needs no image-component hydration or load handler.
-  return <img {...props} src={source} srcSet={srcSet} alt={alt} className="block h-auto w-full object-contain" />
+  return <img {...props} data-hero-image decoding="sync" src={source} srcSet={srcSet} alt={alt} className="block h-auto w-full object-contain" />
 }

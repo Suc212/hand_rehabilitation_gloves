@@ -1,13 +1,11 @@
 "use client"
 
 import type React from "react"
-import Image from "next/image"
 
-import { useState, useMemo } from "react"
-import { Package, ShieldCheck, Banknote } from "lucide-react"
+import { useState } from "react"
 import { ORIGINAL_UNIT_PRICE, UNIT_PRICE, priceTiers } from "@/lib/pricing"
 import { ORDER_SUCCESS_PATH } from "@/lib/routes"
-import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
+import type { ProductId } from "@/lib/products"
 import { trackAddToCart } from "@/lib/meta-pixel"
 
 const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPrice, discount, bundleDiscountPercent }) => {
@@ -30,20 +28,20 @@ const quantityOptions = priceTiers.map(({ quantity, totalPrice, originalTotalPri
   }
 })
 
-export function OrderForm({ productId = DEFAULT_PRODUCT_ID, contactFields, submitClassName }: {
-  productId?: ProductId
+export function OrderForm({ productId, product, contactFields, packageImage, trustBadges, submitIcon, submitClassName }: {
+  productId: ProductId
+  product: { name: string; path: string }
   contactFields: React.ReactNode
+  packageImage: React.ReactNode
+  trustBadges: React.ReactNode
+  submitIcon: React.ReactNode
   submitClassName: string
 }) {
-  const product = products[productId]
   const [selectedQuantity, setSelectedQuantity] = useState(2)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const selectedOption = useMemo(
-    () => quantityOptions.find((opt) => opt.quantity === selectedQuantity) || quantityOptions[0],
-    [selectedQuantity],
-  )
+  const selectedOption = quantityOptions.find((opt) => opt.quantity === selectedQuantity) || quantityOptions[0]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -109,28 +107,14 @@ export function OrderForm({ productId = DEFAULT_PRODUCT_ID, contactFields, submi
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-muted-foreground">
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck className="h-4 w-4 text-primary" />
-            <span>Warranty</span>
-          </div>
-          <div className="flex items-center gap-1.5 font-semibold text-primary">
-            <Banknote className="h-4 w-4" />
-            <span>Accra Payment on Delivery</span>
-          </div>
+          {trustBadges}
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <div className="hidden lg:block lg:col-span-2">
             <div className="sticky top-8 space-y-4">
               <div className="overflow-hidden rounded-2xl bg-white">
-                <Image
-                  src="/images/Img 10.avif"
-                  width={800}
-                  height={800}
-                  sizes="(min-width: 1024px) 320px, 1px"
-                  alt={`${product.name} product package`}
-                  className="aspect-square w-full object-contain p-4"
-                />
+                {packageImage}
               </div>
               <div className="rounded-xl bg-primary/5 p-4 text-center">
                 <p className="text-sm font-medium text-foreground">{product.name}</p>
@@ -235,7 +219,7 @@ export function OrderForm({ productId = DEFAULT_PRODUCT_ID, contactFields, submi
                 disabled={isSubmitting}
                 onClick={() => trackAddToCart({ productId, productName: product.name, productPath: product.path, quantity: selectedQuantity, totalPrice: selectedOption.totalPrice })}
               >
-                <Package className="mr-2 h-5 w-5" />
+                {submitIcon}
                 {isSubmitting
                   ? "Processing..."
                   : `Order Now - Pay GH₵${selectedOption.totalPrice.toLocaleString()} on Delivery`}

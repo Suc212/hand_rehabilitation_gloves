@@ -76,7 +76,7 @@ export function flushPendingMetaEvents() {
 }
 
 export function trackAddToCart(data: CommerceEvent) {
-  // Keep clicks across the full-page success redirect if the lazy pixel has not
+  // Keep clicks across the full-page success redirect if the async pixel has not
   // loaded yet. Ready pixels send immediately; analytics never block checkout.
   try {
     const events = pendingEvents()

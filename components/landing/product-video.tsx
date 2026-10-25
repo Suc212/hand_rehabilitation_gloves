@@ -1,4 +1,4 @@
-import Image from "next/image"
+import { StaticImage } from "@/components/landing/static-image"
 import { OrderCta } from "@/components/landing/order-cta"
 
 const conditions = [
@@ -26,7 +26,7 @@ export function ProductVideo() {
               motor control across different recovery needs.
             </p>
             <div className="mt-8 overflow-hidden rounded-2xl bg-white shadow-lg">
-              <Image
+              <StaticImage
                 src="/images/Img 8.avif"
                 width={800}
                 height={800}

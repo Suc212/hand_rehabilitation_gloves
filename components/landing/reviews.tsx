@@ -1,4 +1,4 @@
-import Image from "next/image"
+import { StaticImage } from "@/components/landing/static-image"
 import { MessageCircle, Star } from "lucide-react"
 
 import { OrderCta } from "@/components/landing/order-cta"
@@ -63,7 +63,7 @@ export function Reviews() {
 
         <div className="mx-auto mt-10 max-w-4xl rounded-2xl border bg-card p-3 shadow-lg sm:p-4">
           <div className="overflow-hidden rounded-xl bg-white">
-            <Image
+            <StaticImage
               src="/images/Review_1.avif"
               width={1122}
               height={1402}

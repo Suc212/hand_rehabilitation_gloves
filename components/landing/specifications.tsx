@@ -1,4 +1,4 @@
-import Image from "next/image"
+import { StaticImage } from "@/components/landing/static-image"
 import { Activity, Battery, Hand, Ruler, Settings, ShieldCheck, Timer, Waves } from "lucide-react"
 
 import { OrderCta } from "@/components/landing/order-cta"
@@ -73,7 +73,7 @@ export function Specifications() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <div className="overflow-hidden rounded-2xl bg-card shadow-lg">
-            <Image
+            <StaticImage
               src="/images/Img 5.avif"
               width={960}
               height={960}
@@ -87,7 +87,7 @@ export function Specifications() {
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl bg-card shadow-lg">
-            <Image
+            <StaticImage
               src="/images/Img 6.avif"
               width={960}
               height={960}

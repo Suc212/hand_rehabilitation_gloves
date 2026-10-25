@@ -1,13 +1,25 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { FreeDeliveryBanner } from "@/components/landing/free-delivery-banner"
 import { MetaEventQueue } from "@/components/analytics/meta-event-queue"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
+// One variable Latin file covers the 400–700 weights used by the storefront.
+// Uncovered symbols (including ₵) use the system fallback instead of fetching
+// the 85 KB Latin Extended subset just for one currency character.
+const inter = localFont({
+  src: "./fonts/inter-latin.woff2",
+  weight: "400 700",
+  style: "normal",
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+  adjustFontFallback: "Arial",
+  fallback: ["Arial", "sans-serif"],
+})
 
 export const metadata: Metadata = {
   title: "Korret Stores | Support for Everyday Independence",
@@ -33,8 +45,13 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "xsp6hw6kjb");
           `}
         </Script>
-        <Script id="meta-pixel" strategy="lazyOnload">
+        <Script id="meta-pixel" strategy="afterInteractive">
           {`
+            (function(){
+            var started=false;
+            function startPixel(){
+            if(started)return;started=true;
+            document.removeEventListener('visibilitychange',onVisibilityChange);
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -46,6 +63,18 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '4632254820337295');
             fbq('track', 'PageView');
+            }
+            function onVisibilityChange(){if(document.visibilityState==='hidden')startPixel()}
+            function afterRendering(){
+              if(document.visibilityState==='hidden'){startPixel();return}
+              requestAnimationFrame(function(){requestAnimationFrame(startPixel)});
+            }
+            document.addEventListener('visibilitychange',onVisibilityChange);
+            var hero=document.querySelector('[data-hero-image]');
+            if(document.visibilityState!=='hidden'&&hero&&typeof hero.decode==='function'){
+              hero.decode().catch(function(){}).then(afterRendering);
+            }else{afterRendering()}
+            })();
           `}
         </Script>
       </head>
