@@ -1,4 +1,5 @@
 import { getImageProps } from "next/image"
+import { preload } from "react-dom"
 
 const source = "/images/Img 1.avif"
 const { props } = getImageProps({
@@ -22,8 +23,13 @@ const srcSet = [
 
 export function ProductImage({ alt, caregiver = false, darkHand = false }: { alt: string; caregiver?: boolean; darkHand?: boolean }) {
   if (caregiver) {
+    // These 720px AVIFs are already only 30–35 KB. Serve them directly to
+    // avoid cold image-optimizer work and preload the first-screen image.
+    const caregiverSource = darkHand ? "/images/Images SP/dark-hand-grip-square.avif" : "/images/Images SP/rehab-glove-square.avif"
+    preload(caregiverSource, { as: "image", fetchPriority: "high" })
     const { props: caregiverProps } = getImageProps({
-      src: darkHand ? "/images/Images SP/dark-hand-grip-square.avif" : "/images/Images SP/rehab-glove-square.avif",
+      src: caregiverSource,
+      unoptimized: true,
       alt,
       width: 720,
       height: 720,

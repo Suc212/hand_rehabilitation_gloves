@@ -1,5 +1,4 @@
 import Image from "next/image"
-import reviewImage from "@/public/images/Review 1.png"
 import { MessageCircle, Star } from "lucide-react"
 
 import { OrderCta } from "@/components/landing/order-cta"
@@ -65,7 +64,10 @@ export function Reviews() {
         <div className="mx-auto mt-10 max-w-4xl rounded-2xl border bg-card p-3 shadow-lg sm:p-4">
           <div className="overflow-hidden rounded-xl bg-white">
             <Image
-              src={reviewImage}
+              src="/images/Review_1.avif"
+              width={1122}
+              height={1402}
+              loading="lazy"
               sizes="(min-width: 960px) 864px, calc(100vw - 64px)"
               alt="Facebook review from Akosua Ofori about using a hand rehabilitation glove after stroke recovery"
               className="w-full object-contain"
