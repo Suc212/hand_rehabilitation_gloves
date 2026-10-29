@@ -20,6 +20,7 @@ const resend = new Resend(resendApiKey)
 
 const orderSchema = z.object({
   productId: z.enum(PRODUCT_IDS).default(DEFAULT_PRODUCT_ID),
+  affectedHand: z.enum(["left", "right"], { required_error: "Please select the affected hand" }),
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   address: z.string().min(1, "Address is required"),
@@ -72,6 +73,7 @@ export async function POST(request: NextRequest) {
         <li><strong>WhatsApp:</strong> ${orderData.whatsapp}</li>
         <li><strong>Email:</strong> ${orderData.email || "Not provided"}</li>
         <li><strong>Address:</strong> ${orderData.address}</li>
+        <li><strong>Affected hand:</strong> ${orderData.affectedHand === "left" ? "Left hand" : "Right hand"}</li>
         <li><strong>Order:</strong> ${quantity} ${unitLabel} of ${product.name} for GH₵${totalPrice.toLocaleString()}</li>
         <li><strong>Product page:</strong> ${product.path}</li>
         <li><strong>Order Time:</strong> ${new Date().toLocaleString()}</li>

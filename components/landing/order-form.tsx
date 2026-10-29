@@ -52,6 +52,7 @@ export function OrderForm({ productId, product, contactFields, packageImage, tru
 
     const orderData = {
       productId,
+      affectedHand: formData.get("affectedHand") as string,
       firstName: formData.get("firstName") as string,
       lastName: formData.get("lastName") as string,
       phone: formData.get("phone") as string,
@@ -208,7 +209,7 @@ export function OrderForm({ productId, product, contactFields, packageImage, tru
                   </span>
                 </div>
                 <p className="mt-2 text-center text-xs font-medium text-primary">
-                  Pay GH₵{selectedOption.totalPrice.toLocaleString()} when you receive your order
+                  Pay GH₵{selectedOption.totalPrice.toLocaleString()} on delivery in Accra or Kumasi. Advance payment applies elsewhere.
                 </p>
               </div>
 

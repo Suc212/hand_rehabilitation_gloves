@@ -1,9 +1,8 @@
 import { ProductImage } from "@/components/landing/product-image"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
-import { DynamicOrderCount } from "@/components/landing/dynamic-order-count"
 import { priceTiers } from "@/lib/pricing"
-import { CheckCircle2, Shield, Star } from "lucide-react"
+import { CheckCircle2, Star } from "lucide-react"
 import { DEFAULT_PRODUCT_ID, products, type ProductId } from "@/lib/products"
 
 export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: ProductId }) {
@@ -33,11 +32,6 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
                 <Star className="h-4 w-4 fill-primary" />
                 <span>4.8/5 from 500+ customers</span>
               </div>
-              {!caregiver && (
-                <div className="rounded-full bg-secondary px-3 py-1.5 font-medium text-secondary-foreground">
-                  <DynamicOrderCount />
-                </div>
-              )}
             </div>
 
             <ul className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
@@ -85,12 +79,6 @@ export function HeroSection({ productId = DEFAULT_PRODUCT_ID }: { productId?: Pr
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4" />
-                <span>Warranty</span>
-              </div>
-            </div>
           </div>
 
           <div className="relative order-first -mx-4 overflow-hidden bg-primary/10 p-3 sm:mx-0 sm:p-4 lg:order-last">

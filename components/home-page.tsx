@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const values = [
   { icon: Hand, title: "Made for everyday routines", text: "Practical tools that fit into short, regular sessions at home." },
   { icon: HeartHandshake, title: "Support for you and your family", text: "Options for people working on hand mobility and the caregivers beside them." },
-  { icon: Truck, title: "Delivered across Ghana", text: "Free delivery, with payment on delivery available in Accra." },
+  { icon: Truck, title: "Delivered across Ghana", text: "Free delivery, with payment on delivery available in Accra and Kumasi." },
 ]
 
 const steps = [

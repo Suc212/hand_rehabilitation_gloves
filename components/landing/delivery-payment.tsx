@@ -14,7 +14,7 @@ export function DeliveryPayment() {
             Free Delivery in Ghana 🇬🇭
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            We offer free delivery across Ghana. Payment on delivery is available only in Accra after your order has
+            We offer free delivery across Ghana. Payment on delivery is available in Accra and Kumasi after your order has
             been confirmed.
           </p>
         </div>
@@ -25,10 +25,10 @@ export function DeliveryPayment() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                 <Banknote className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-semibold text-foreground">Accra Orders</h3>
+              <h3 className="font-semibold text-foreground">Accra &amp; Kumasi Orders</h3>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Customers in Accra can pay when the hand rehabilitation glove is delivered. We will contact you first to
+              Customers in Accra and Kumasi can pay when the hand rehabilitation glove is delivered. We will contact you first to
               confirm your details before dispatch.
             </p>
           </div>
@@ -38,10 +38,10 @@ export function DeliveryPayment() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                 <MapPin className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-semibold text-foreground">Outside Accra</h3>
+              <h3 className="font-semibold text-foreground">Other Locations in Ghana</h3>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Orders outside Accra require advance payment before shipment. This helps us confirm dispatch and provide
+              Orders outside Accra and Kumasi require advance payment before shipment. This helps us confirm dispatch and provide
               reliable delivery to your location.
             </p>
           </div>

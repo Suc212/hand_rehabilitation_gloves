@@ -15,7 +15,7 @@ import { StaticImage } from "@/components/landing/static-image"
 import { buttonVariants } from "@/components/ui/button"
 import { Footer } from "@/components/landing/footer"
 import { products, type ProductId } from "@/lib/products"
-import { Banknote, Package, ShieldCheck } from "lucide-react"
+import { Banknote, Package } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function ProductLandingPage({ productId }: { productId: ProductId }) {
@@ -35,13 +35,9 @@ export function ProductLandingPage({ productId }: { productId: ProductId }) {
           productId={productId}
           product={{ name: products[productId].name, path: products[productId].path }}
           trustBadges={<>
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-primary" />
-              <span>Warranty</span>
-            </div>
             <div className="flex items-center gap-1.5 font-semibold text-primary">
               <Banknote className="h-4 w-4" />
-              <span>Accra Payment on Delivery</span>
+              <span>Payment on Delivery in Accra &amp; Kumasi</span>
             </div>
           </>}
           submitIcon={<Package className="mr-2 h-5 w-5" />}

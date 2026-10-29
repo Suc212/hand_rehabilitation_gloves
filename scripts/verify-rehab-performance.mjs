@@ -74,6 +74,31 @@ try {
   const stylesheet = html.match(/<link[^>]+rel="stylesheet"[^>]*>/)
   assert.ok(stylesheet, "Keep the measured external stylesheet")
   assert.ok(stylesheet.index < html.indexOf("<main"), "First-screen styles must be discoverable before the content")
+  const content = await page.evaluate(() => {
+    const audience = [...document.querySelectorAll("h2")].find((heading) => heading.textContent.trim() === "Who It Is For")?.closest("section")
+    const warranty = [...document.querySelectorAll("main p, main span")].filter((element) => element.textContent.trim() === "Warranty")
+    return {
+      audience: audience?.textContent,
+      warrantyCount: warranty.length,
+      warrantySection: warranty[0]?.closest("section")?.querySelector("h2")?.textContent,
+      reviews: document.querySelector("#facebook-reviews .grid")?.textContent,
+      reviewTags: document.querySelectorAll("#facebook-reviews .grid p.rounded-full").length,
+      simulatedReviews: document.querySelector('#facebook-reviews [aria-label="Simulated stroke recovery reviews"]')?.children.length,
+      delivery: document.querySelector("#delivery").textContent,
+      faq: document.querySelector("#faq").textContent,
+      order: document.querySelector("#order").textContent,
+    }
+  })
+  assert.equal(content.warrantyCount, 1)
+  assert.equal(content.warrantySection, "How It Works")
+  assert.match(content.audience, /stroke/i)
+  assert.doesNotMatch(content.audience, /arthritis|post-surg|Parkinson|neuropathy|multiple sclerosis/i)
+  assert.equal(content.reviewTags, 0)
+  assert.equal(content.simulatedReviews, 4)
+  assert.doesNotMatch(content.reviews, /hand surgery|morning stiffness|arthritis/i)
+  assert.match(content.delivery, /Accra and Kumasi/)
+  assert.match(content.faq, /Accra and Kumasi/)
+  assert.match(content.order, /Accra & Kumasi/)
   await waitForPixel()
   assert.equal(pixelDownloads, 1)
   assert.equal(calls.filter((call) => call[0] === "init" && call[1] === "4632254820337295").length, 1)
@@ -156,6 +181,10 @@ try {
   await page.type("#phone", "0200000000")
   await page.type("#whatsapp", "0200000000")
   await page.type("#address", "Local intercepted verification only")
+  assert.equal(await page.$eval('input[name="affectedHand"]', (input) => input.validity.valueMissing), true)
+  await page.click('button[type="submit"]')
+  assert.equal(orders.length, 0, "An affected hand is required before submission")
+  await page.click('input[name="affectedHand"][value="left"]')
   await page.click('button[type="submit"]')
   await page.waitForFunction(() => document.querySelector("form").textContent.includes("Verification: please retry."))
   assert.equal(events("Purchase").length, 0)
@@ -163,6 +192,7 @@ try {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
   await page.screenshot({ path: `${directory}/order-mobile.png` })
   rejectOrder = false
+  await page.click('input[name="affectedHand"][value="right"]')
   await Promise.all([
     page.waitForNavigation({ waitUntil: "networkidle0" }),
     page.click('button[type="submit"]'),
@@ -172,8 +202,11 @@ try {
   assert.equal(new URL(page.url()).pathname, "/order-success")
   assert.match(await page.$eval("[data-order-total]", (element) => element.textContent), /4,320/)
   assert.equal(await page.$eval("[data-order-product]", (element) => element.textContent), productName)
+  assert.match(await page.$eval("main", (element) => element.textContent), /Payment on delivery is available in Accra and Kumasi/)
   assert.equal(orders.length, 2)
   assert.equal(orders[1].productId, productId)
+  assert.equal(orders[0].affectedHand, "left")
+  assert.equal(orders[1].affectedHand, "right")
   assert.equal(orders[1].quantity, "3")
   assert.equal(orders[1].totalPrice, "4320")
   assert.equal(events("Purchase").length, 1)

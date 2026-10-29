@@ -11,6 +11,25 @@ function Label({ className = "", ...props }: React.ComponentProps<"label">) {
 export function OrderContactFields() {
   return (
     <>
+              <fieldset className="space-y-3">
+                <legend className="text-base font-semibold">
+                  Which hand is affected? <span className="text-destructive">*</span>
+                </legend>
+                <div className="grid grid-cols-2 gap-3">
+                  {(["left", "right"] as const).map((hand) => (
+                    <label key={hand} className="flex cursor-pointer items-center gap-3 rounded-xl border p-4 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                      <input
+                        type="radio"
+                        name="affectedHand"
+                        value={hand}
+                        required
+                        className="h-4 w-4 shrink-0 accent-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                      />
+                      <span>{hand === "left" ? "Left hand" : "Right hand"}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">

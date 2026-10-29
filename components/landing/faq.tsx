@@ -32,7 +32,7 @@ const faqs = [
   {
     question: "Can I pay when it is delivered?",
     answer:
-      "Payment on delivery is available in Accra after your order is confirmed. Orders outside Accra require advance payment before dispatch.",
+      "Payment on delivery is available in Accra and Kumasi after your order is confirmed. Orders outside Accra and Kumasi require advance payment before dispatch.",
   },
 ]
 

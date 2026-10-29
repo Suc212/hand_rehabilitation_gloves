@@ -69,7 +69,7 @@ export default async function OrderSuccessPage() {
             <div className="flex justify-between gap-4"><dt className="text-muted-foreground">Delivery within Ghana</dt><dd className="font-medium text-primary">Free</dd></div>
             <div className="flex items-center justify-between gap-4 border-t pt-5"><dt className="font-semibold">Order total</dt><dd className="text-2xl font-bold" data-order-total>GH₵{receipt.totalPrice.toLocaleString("en-GH")}</dd></div>
           </dl>
-          <p className="border-t bg-muted/40 px-5 py-4 text-xs leading-relaxed text-muted-foreground sm:px-8">No online payment has been taken. Payment on delivery is available in Accra; our team will confirm payment arrangements for other locations.</p>
+          <p className="border-t bg-muted/40 px-5 py-4 text-xs leading-relaxed text-muted-foreground sm:px-8">No online payment has been taken. Payment on delivery is available in Accra and Kumasi; our team will confirm payment arrangements for other locations.</p>
         </section>
 
         <section aria-labelledby="next-steps-heading" className="mt-10">
